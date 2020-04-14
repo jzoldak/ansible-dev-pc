@@ -1,0 +1,24 @@
+- name: Core OS customization (Gnome UI)
+  hosts: 127.0.0.1
+  connection: local
+
+  vars:
+    dconf_config:
+      # Keyboard shortcuts
+      - key: /org/gnome/desktop/wm/keybindings/cycle-group
+        value: "['<Super>Escape']"
+      - key: /org/gnome/desktop/wm/keybindings/cycle-group-backward
+        value: "['<Shift><Super>Escape']"
+
+  tasks:
+    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
+
+    # Super Escape is already mapped to Restore keyboard defaults,
+    # so this doesn't work.
+    # Instead use "Settings/Keyboard" UI app
+    - name: Update customization with dconf
+      dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop: "{{ dconf_config }}"
+      when: not is_wsl

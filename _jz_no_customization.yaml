@@ -107,7 +107,7 @@
 - import_playbook: vlc/core.yaml
 
 # Zoom
-# - import_playbook: zoom/core.yaml
+- import_playbook: zoom/core.yaml
 
 ##### Applications (commercial license required)
 

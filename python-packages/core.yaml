@@ -1,0 +1,34 @@
+- name: Retext
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
+
+    - name: Install PIP
+      become: yes
+      apt:
+        package:
+          - python-pip
+          - python3-pip
+
+    - name: Install psutil Python package
+      become: yes
+      pip:
+        name: psutil
+      when: not is_wsl
+
+    - name: Install PyQt5 Python package (needed for ReText)
+      become: yes
+      pip:
+        executable: pip3
+        name: PyQt5
+        extra_args: --only-binary pyqt5
+      when: not is_wsl
+      
+    - name: Install Retext Python package
+      become: yes
+      pip:
+        executable: pip3
+        name: ReText
+      when: not is_wsl
