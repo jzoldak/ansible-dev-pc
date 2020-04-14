@@ -4,6 +4,12 @@
 
   tasks:
     - name: Install tmux
-      become: true
+      become: yes
       apt:
         package: tmux
+
+    - name: Add tmux configuration file
+      become: yes
+      copy:
+        src: .tmux.conf
+        dest: $HOME

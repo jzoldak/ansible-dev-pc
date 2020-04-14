@@ -4,6 +4,13 @@
 
   tasks:
     - name: Install via snap
-      become: true
+      become: yes
       snap:
         name: starship
+
+    - name: Initialize starship during shell config
+      blockinfile:
+        path: ~/.bashrc
+        marker: "### {mark} Ansible managed: initialize starship"
+        block: |
+          eval "$(starship init bash)"

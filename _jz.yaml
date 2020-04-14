@@ -10,18 +10,7 @@
   connection: local
 
 - import_playbook: _jz_no_customization.yaml
-
-# - import_playbook: customization-text.yaml
-# - import_playbook: customization-ui.yaml
-# - import_playbook: vscode/customization.yaml
-# - import_playbook: docker/customization.yaml
-# - import_playbook: dotnet-core/customization.yaml
-# - import_playbook: git/customization.yaml
-# - import_playbook: kubectl/customization.yaml
-# - import_playbook: no-screen-blank/core.yaml
-# - import_playbook: nodejs/customization.yaml
-# - import_playbook: ruby/customization.yaml
-# - import_playbook: alacritty/customization.yaml
+- import_playbook: customization-envar.yaml
 
 # Install tmux
 - import_playbook: tmux/core.yaml
@@ -34,3 +23,12 @@
 
 # Install starship
 - import_playbook: starship/core.yaml
+
+# TODO: atom configuration
+# TODO: install Retext
+# TODO: install Vault and signing script
+# TODO: open ufw for port 22
+# TODO: copy over ssh keys and config
+
+
+# DONE: fix dotfiles

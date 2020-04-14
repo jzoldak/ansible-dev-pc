@@ -6,7 +6,7 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Install via snap
-      become: true
+      become: yes
       snap:
         name: atom
         classic: yes

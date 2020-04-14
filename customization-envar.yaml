@@ -1,0 +1,16 @@
+- name: Environment variable customization
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Add custom environment variable values
+      blockinfile:
+        path: ~/.bashrc
+        marker: "### {mark} Ansible managed: custom environment variables"
+        block: |
+          echo ""
+          export GITLAB_REGISTRY=registry.clearballot.com
+          export AZURE_REGISTRY=cbgsec.azurecr.io
+          #export DOCKER_HOST=tcp://0.0.0.0:2375
+          export DOCKER_BUILDKIT=1
+          export VAULT_ADDR=https://cbgsec.clearballot.com
