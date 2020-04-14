@@ -1,0 +1,36 @@
+#########################################################################################
+#
+#  Note that import order here is important, so rearranging import lists
+#  is *not* recommended.
+#
+#########################################################################################
+
+- name: Configure machine for development work (with customizations)
+  hosts: 127.0.0.1
+  connection: local
+
+- import_playbook: _jz_no_customization.yaml
+
+# - import_playbook: customization-text.yaml
+# - import_playbook: customization-ui.yaml
+# - import_playbook: vscode/customization.yaml
+# - import_playbook: docker/customization.yaml
+# - import_playbook: dotnet-core/customization.yaml
+# - import_playbook: git/customization.yaml
+# - import_playbook: kubectl/customization.yaml
+# - import_playbook: no-screen-blank/core.yaml
+# - import_playbook: nodejs/customization.yaml
+# - import_playbook: ruby/customization.yaml
+# - import_playbook: alacritty/customization.yaml
+
+# Install tmux
+- import_playbook: tmux/core.yaml
+
+# Install Atom
+- import_playbook: atom/core.yaml
+
+# Install fonts for starship
+- import_playbook: fonts/core.yaml
+
+# Install starship
+- import_playbook: starship/core.yaml

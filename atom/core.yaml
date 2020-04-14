@@ -1,4 +1,4 @@
-- name: Spotify
+- name: Atom
   hosts: 127.0.0.1
   connection: local
 
@@ -8,5 +8,6 @@
     - name: Install via snap
       become: true
       snap:
-        name: spotify
+        name: atom
+        classic: yes
       when: not is_wsl

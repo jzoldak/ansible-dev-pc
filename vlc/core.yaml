@@ -5,8 +5,8 @@
   tasks:
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
-    - name: Install VLC
-      become: yes
-      apt:
-        package: vlc
+    - name: Install via snap
+      become: true
+      snap:
+        name: vlc
       when: not is_wsl
