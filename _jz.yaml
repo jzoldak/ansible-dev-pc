@@ -10,7 +10,7 @@
   connection: local
 
 - import_playbook: _jz_no_customization.yaml
-- import_playbook: customization-envar.yaml
+- import_playbook: _jz_envar.yaml
 
 # Install tmux
 - import_playbook: tmux/core.yaml
@@ -24,11 +24,8 @@
 # Install starship
 - import_playbook: starship/core.yaml
 
-# TODO: atom configuration
+# TODO: atom configuration - git clone git@gitlab.clearballot.com:jz/atom.git $HOME/.atom
 # TODO: install Retext
 # TODO: install Vault and signing script
 # TODO: open ufw for port 22
-# TODO: copy over ssh keys and config
-
-
-# DONE: fix dotfiles
+# TODO: copy over ssh keys and config, set the correct perms, and do `ssh add`

@@ -8,7 +8,6 @@
         path: ~/.bashrc
         marker: "### {mark} Ansible managed: custom environment variables"
         block: |
-          echo ""
           export GITLAB_REGISTRY=registry.clearballot.com
           export AZURE_REGISTRY=cbgsec.azurecr.io
           #export DOCKER_HOST=tcp://0.0.0.0:2375
