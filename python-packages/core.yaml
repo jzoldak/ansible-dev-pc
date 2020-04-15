@@ -5,12 +5,13 @@
   tasks:
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
-    - name: Install PIP
+    - name: Install PIP and venv
       become: yes
       apt:
         package:
           - python-pip
           - python3-pip
+          - python3-venv
 
     - name: Install psutil Python package
       become: yes
