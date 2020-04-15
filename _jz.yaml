@@ -27,17 +27,16 @@
 # Install python packages
 - import_playbook: python-packages/core.yaml
 
-# This stuff is still manual
+# Install terraform
+- import_playbook: terraform/core.yaml
+
 # TODO: map Super Escape to "Switch windows of an app directly" via the Settings UI app (Keyboard pane)
 # TODO: copy over ssh keys and config, set the correct perms, and do `ssh add`
 # TODO: atom configuration - git clone git@gitlab.clearballot.com:jz/atom.git $HOME/.atom
 # TODO: Vault signing script
 
-
 # Manual stuff
 # Open up Firefox, log in and sync
 # Log into vault via the UI, copy token, from a shell do "vault login" and give it the token
-# Git config for username and email
 # git config --global user.name "Jesse Zoldak"
 # git config --global user.email "jesse.zoldak@clearballot.com"
-# git config --global core.editor vi
