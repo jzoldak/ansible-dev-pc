@@ -1,0 +1,12 @@
+- name: Cherrytree
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
+
+    - name: Install Cherrytree via snap
+      become: yes
+      snap:
+        name: cherrytree
+      when: not is_wsl

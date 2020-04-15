@@ -28,7 +28,7 @@
 # - import_playbook: azure/vscode.yaml
 
 # Brave
-# - import_playbook: brave/core.yaml
+- import_playbook: brave/core.yaml
 
 # Broot
 - import_playbook: broot/core.yaml
