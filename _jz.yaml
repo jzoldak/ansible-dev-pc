@@ -37,6 +37,7 @@
 # Manual stuff
 # Open up Firefox, log in and sync
 # Log into vault via the UI, copy token, from a shell do "vault login" and give it the token
-
-# Clone repos:
-# git@gitlab.clearballot.com:jz/notes.wiki.git
+# Git config for username and email
+# git config --global user.name "Jesse Zoldak"
+# git config --global user.email "jesse.zoldak@clearballot.com"
+# git config --global core.editor vi

@@ -54,3 +54,9 @@
       apt:
         package: ripgrep
       when: ansible_distribution_release != 'bionic' and ansible_distribution_release != 'stretch'
+
+    - name: Add global git config file
+      copy:
+        src: gitconfig
+        dest: $HOME/.gitconfig
+        mode: 0644
