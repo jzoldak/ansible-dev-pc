@@ -1,0 +1,31 @@
+- name: Signal
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Add Signal APT package key
+      become: yes
+      apt_key:
+        url: https://updates.signal.org/desktop/apt/keys.asc
+
+    - name: Add Signal APT package repository
+      become: yes
+      apt_repository:
+        repo: deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
+        filename: signal-xenial
+        update_cache: no
+      register: apt_repository
+
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      when: apt_repository.changed
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install Signal
+      become: yes
+      apt:
+        package: signal-desktop

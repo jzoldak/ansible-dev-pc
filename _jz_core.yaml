@@ -13,3 +13,9 @@
           #export DOCKER_HOST=tcp://0.0.0.0:2375
           export DOCKER_BUILDKIT=1
           export VAULT_ADDR=https://cbgsec.clearballot.com
+
+    - name: Install more helpful apt packages
+      become: yes
+      apt:
+        package:
+          - whois

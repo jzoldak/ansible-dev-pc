@@ -10,7 +10,7 @@
   connection: local
 
 - import_playbook: _jz_no_customization.yaml
-- import_playbook: _jz_envar.yaml
+- import_playbook: _jz_core.yaml
 
 # Install tmux
 - import_playbook: tmux/core.yaml
