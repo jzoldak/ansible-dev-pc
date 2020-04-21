@@ -31,7 +31,13 @@
 - import_playbook: terraform/core.yaml
 
 # Install cherrytree
-- import_playbook: terraform/core.yaml
+- import_playbook: cherrytree/core.yaml
+
+# Install slack
+- import_playbook: slack/core.yaml
+
+# Install vault
+- import_playbook: vault/core.yaml
 
 # TODO: map Super Escape to "Switch windows of an app directly" via the Settings UI app (Keyboard pane)
 # TODO: copy over ssh keys and config, set the correct perms, and do `ssh add`
