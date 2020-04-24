@@ -1,0 +1,32 @@
+- name: Yubico
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
+
+    - name: Add Yubico APT package repository
+      become: yes
+      apt_repository:
+        repo: ppa:yubico/stable
+        update_cache: yes
+      register: apt_repository
+      when: not is_wsl
+
+    - name: Install Yubico tools
+      become: yes
+      apt:
+        package:
+          - wget
+          - gnupg2
+          - gnupg-agent
+          - dirmngr
+          - cryptsetup
+          - scdaemon
+          - pcscd
+          - secure-delete
+          - hopenpgp-tools
+          - yubikey-manager-qt
+          - yubioath-desktop
+          - yubikey-personalization-gui
+      when: not is_wsl
