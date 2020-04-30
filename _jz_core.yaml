@@ -19,3 +19,5 @@
       apt:
         package:
           - whois
+          - nmap
+          - tree

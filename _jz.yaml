@@ -42,6 +42,8 @@
 # Install stuff for yubikey
 - import_playbook: yubico/core.yaml
 
+# Install Signal companion app
+- import_playbook: signal/core.yaml
 
 # TODO: map Super Escape to "Switch windows of an app directly" via the Settings UI app (Keyboard pane)
 # TODO: copy over ssh keys and config, set the correct perms, and do `ssh add`
