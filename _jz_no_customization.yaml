@@ -94,7 +94,7 @@
 # - import_playbook: prettyping/core.yaml
 
 # RDP/X/VNC/SSH client
-# - import_playbook: remmina/core.yaml
+- import_playbook: remmina/core.yaml
 
 # Slack desktop application
 # TODO: fix this
