@@ -1,0 +1,17 @@
+- name: FortiClient
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
+    - name: Download deb file for FortiClient
+      get_url:
+        url: https://filestore.fortinet.com/forticlient/downloads/FortiClientFullVPNInstaller_6.4.0.0851.deb
+        dest: /tmp/FortiClientFullVPNInstaller_6.4.0.0851.deb
+      when: not is_wsl
+
+    - name: Install FortiClient
+      become: yes
+      apt:
+        deb: /tmp/FortiClientFullVPNInstaller_6.4.0.0851.deb
+      when: not is_wsl
