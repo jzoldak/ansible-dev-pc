@@ -1,0 +1,54 @@
+- name: Alacritty (customization)
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
+
+    - name: Ensure Alacritty configuration folder exists
+      file:
+        path: ~/.config/alacritty
+        state: directory
+      when: not is_wsl and ansible_distribution == 'Ubuntu'
+
+    - name: Update ~/.config/alacritty/alacritty.yml
+      copy:
+        dest: ~/.config/alacritty/alacritty.yml
+        content: |
+          # GNOME Terminal Tango Dark
+          colors:
+            primary:
+              background: '0x2d0922'
+              foreground: '0xd3d7cf'
+              
+            normal:
+              black: '0x2e3436'
+              red: '0xcc0000'
+              green: '0x4e9a06'
+              yellow: '0xc4a000'
+              blue: '0x3465a4'
+              magenta: '0x75507b'
+              cyan: '0x06989a'
+              white: '0xd3d7cf'
+
+            bright:
+              black: '0x555753'
+              red: '0xef2929'
+              green: '0x8ae234'
+              yellow: '0xfce94f'
+              blue: '0x729fcf'
+              magenta: '0xad7fa8'
+              cyan: '0x34e2e2'
+              white: '0xeeeeec'
+
+          font:
+            # The normal (roman) font face to use.
+            normal:
+              family: firacode
+              style: Regular
+              # style: Bold
+            size: 12.0
+
+          draw_bold_text_with_bright_colors: true
+          
+      when: not is_wsl and ansible_distribution == 'Ubuntu'

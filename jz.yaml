@@ -48,6 +48,9 @@
 # Install OBS
 - import_playbook: obs-studio/core.yaml
 
+# Install Alacritty
+- import_playbook: alacritty/core.yaml
+- import_playbook: alacritty/customization-jz.yaml
 
 # TODO: map Super Escape to "Switch windows of an app directly" via the Settings UI app (Keyboard pane)
 # TODO: copy over ssh keys and config, set the correct perms, and do `ssh add`
