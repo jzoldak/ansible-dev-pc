@@ -52,6 +52,9 @@
 - import_playbook: alacritty/core.yaml
 - import_playbook: alacritty/customization-jz.yaml
 
+# Install Postman
+- import_playbook: postman/core.yaml
+
 # TODO: map Super Escape to "Switch windows of an app directly" via the Settings UI app (Keyboard pane)
 # TODO: copy over ssh keys and config, set the correct perms, and do `ssh add`
 # TODO: atom configuration - git clone git@gitlab.clearballot.com:jz/atom.git $HOME/.atom
