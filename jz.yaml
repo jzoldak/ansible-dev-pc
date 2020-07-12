@@ -12,6 +12,9 @@
 - import_playbook: _jz_no_customization.yaml
 - import_playbook: _jz_core.yaml
 
+# Install a newer version of python3
+- import_playbook: python-latest
+
 # Install tmux
 - import_playbook: tmux/core.yaml
 
