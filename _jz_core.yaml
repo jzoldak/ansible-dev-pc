@@ -23,3 +23,4 @@
           - tree
           - gnome-system-tools
           - black
+          - shellcheck
