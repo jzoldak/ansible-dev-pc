@@ -14,7 +14,7 @@
     - name: Add Brave APT package repository
       become: yes
       apt_repository:
-        repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ {{ ansible_distribution_release }} main
+        repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
         filename: brave-browser-release-{{ ansible_distribution_release }}
         update_cache: no
       register: apt_repository

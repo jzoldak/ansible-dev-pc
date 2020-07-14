@@ -1,4 +1,4 @@
-- name: Retext
+- name: Python Packages
   hosts: 127.0.0.1
   connection: local
 
@@ -9,9 +9,15 @@
       become: yes
       apt:
         package:
-          - python-pip
           - python3-pip
           - python3-venv
+
+    - name: Install python-language-server Python package
+      become: yes
+      pip:
+        executable: pip3
+        name: python-language-server[all]
+      when: not is_wsl
 
     - name: Install psutil Python package
       become: yes
