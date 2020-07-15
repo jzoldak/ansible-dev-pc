@@ -125,3 +125,6 @@
 
 # Sublime Text and Sublime Merge
 # - import_playbook: sublime/core.yaml
+
+# FortiClient
+- import_playbook: forticlient/core.yaml
