@@ -9,11 +9,8 @@
   hosts: 127.0.0.1
   connection: local
 
-- import_playbook: _jz_no_customization.yaml
+- import_playbook: _jz_customized.yaml
 - import_playbook: _jz_core.yaml
-
-# Install a newer version of python3
-# - import_playbook: python-latest
 
 # Install tmux
 - import_playbook: tmux/core.yaml
@@ -36,9 +33,6 @@
 # Install cherrytree
 - import_playbook: cherrytree/core.yaml
 
-# Install slack
-- import_playbook: slack/core.yaml
-
 # Install vault
 - import_playbook: vault/core.yaml
 
@@ -51,22 +45,15 @@
 # Install OBS
 - import_playbook: obs-studio/core.yaml
 
-# Install Alacritty
-- import_playbook: alacritty/core.yaml
-- import_playbook: alacritty/customization-jz.yaml
-
-# Install Postman
-- import_playbook: postman/core.yaml
-
 
 # Manual stuff
 # Open up Firefox, log in and sync
 # git config --global user.name "Jesse Zoldak"
 # git config --global user.email "jesse.zoldak@clearballot.com"
-# TODO: map Super Escape to "Switch windows of an app directly" via the Settings UI app (Keyboard pane)
 # TODO: copy over ssh keys and config, set the correct perms (0600), and do `ssh-add`
 # TODO: atom configuration - git clone git@gitlab.clearballot.com:jz/atom.git $HOME/.atom
 # TODO: Vault signing script
 # Log into vault via the UI, copy token, from a shell do "vault login" and give it the token
 # or save the ~/.vault-token file before blowing away the old machine
 # alias sign=/home/jz/bin/vault-ssh-sign.sh
+# TODO: Install the DisplayLink drivers

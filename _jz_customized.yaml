@@ -28,7 +28,7 @@
 # - import_playbook: azure/vscode.yaml
 
 # Brave
-#- import_playbook: brave/core.yaml
+- import_playbook: brave/core.yaml
 
 # Broot
 - import_playbook: broot/core.yaml
@@ -68,7 +68,7 @@
 # - import_playbook: nodejs/vscode.yaml
 
 # Postman
-# - import_playbook: postman/core.yaml
+- import_playbook: postman/core.yaml
 
 # PowerShell Core
 # - import_playbook: powershell-core/core.yaml
@@ -85,7 +85,8 @@
 ##### Applications (free)
 
 # Alacritty (high performance terminal application)
-# - import_playbook: alacritty/core.yaml
+- import_playbook: alacritty/core.yaml
+- import_playbook: alacritty/customization-jz.yaml
 
 # Google Chrome browser
 - import_playbook: google-chrome/core.yaml
@@ -97,8 +98,7 @@
 - import_playbook: remmina/core.yaml
 
 # Slack desktop application
-# TODO: fix this
-#- import_playbook: slack/core.yaml
+- import_playbook: slack/core.yaml
 
 # Microsoft Teams
 # - import_playbook: teams/core.yaml
@@ -108,6 +108,9 @@
 
 # Zoom
 - import_playbook: zoom/core.yaml
+
+# FortiClient
+- import_playbook: forticlient/core.yaml
 
 ##### Applications (commercial license required)
 
@@ -125,6 +128,3 @@
 
 # Sublime Text and Sublime Merge
 # - import_playbook: sublime/core.yaml
-
-# FortiClient
-- import_playbook: forticlient/core.yaml
