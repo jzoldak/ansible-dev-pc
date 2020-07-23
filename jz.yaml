@@ -57,3 +57,4 @@
 # or save the ~/.vault-token file before blowing away the old machine
 # alias sign=/home/jz/bin/vault-ssh-sign.sh
 # TODO: Install the DisplayLink drivers
+# TODO: sudo -H python3 -m pip install hvac
