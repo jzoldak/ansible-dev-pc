@@ -26,3 +26,4 @@
           - shellcheck
           - usb-creator-gtk
           - ldnsutils
+          - qemu-kvm
