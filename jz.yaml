@@ -45,6 +45,8 @@
 # Install OBS
 - import_playbook: obs-studio/core.yaml
 
+# Install the Discord App
+- import_playbook: discord/core.yaml
 
 # Manual stuff
 # Open up Firefox, log in and sync

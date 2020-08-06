@@ -1,0 +1,12 @@
+- name: DiscordApp
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
+
+    - name: Install Discord App
+      become: yes
+      apt:
+        deb: https://discord.com/api/download?platform=linux&format=deb
+      when: not is_wsl
