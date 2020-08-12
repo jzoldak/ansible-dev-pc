@@ -1,0 +1,32 @@
+- name: gcloud
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Import the Google Cloud public key
+      become: yes
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+    - name: Add the Cloud SDK distribution URI as a package source
+      become: yes
+      apt_repository:
+        repo: deb https://packages.cloud.google.com/apt cloud-sdk main
+        filename: google-cloud-sdk
+        update_cache: no
+      register: apt_repository
+
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      when: apt_repository.changed
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install google-cloud-sdk
+      become: yes
+      apt:
+        package:
+          - google-cloud-sdk

@@ -48,6 +48,9 @@
 # Install the Discord App
 - import_playbook: discord/core.yaml
 
+# Install the Google Cloud SDK
+- import_playbook: gcloud/core.yaml
+
 # Manual stuff
 # Open up Firefox, log in and sync
 # git config --global user.name "Jesse Zoldak"
