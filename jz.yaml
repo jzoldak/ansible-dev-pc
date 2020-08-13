@@ -46,10 +46,13 @@
 - import_playbook: obs-studio/core.yaml
 
 # Install the Discord App
-- import_playbook: discord/core.yaml
 
+- import_playbook: discord/core.yaml
 # Install the Google Cloud SDK
 - import_playbook: gcloud/core.yaml
+
+# Install the Bitwarden App
+- import_playbook: bitwarden/core.yaml
 
 # Manual stuff
 # Open up Firefox, log in and sync

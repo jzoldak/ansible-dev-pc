@@ -1,0 +1,9 @@
+- name: Bitwarden
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install Bitwarden via snap
+      become: yes
+      snap:
+        name: bitwarden
