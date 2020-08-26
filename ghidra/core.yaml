@@ -1,0 +1,33 @@
+- name: Ghidra
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Add Amazon Corretto APT package key
+      become: yes
+      apt_key:
+        url: https://apt.corretto.aws/corretto.key
+
+    - name: Add Amazon Corretto APT package repository
+      become: yes
+      apt_repository:
+        repo: deb https://apt.corretto.aws stable main
+        update_cache: yes
+
+    - name: Install Amazon Coretto Java 11
+      become: yes
+      apt:
+        package: java-11-amazon-corretto-jdk
+    
+    - name: Download Ghidra
+      get_url:
+        url: https://ghidra-sre.org/ghidra_9.1.2_PUBLIC_20200212.zip
+        dest: /tmp/ghidra_9.1.2_PUBLIC_20200212.zip
+        checksum: sha256:ebe3fa4e1afd7d97650990b27777bb78bd0427e8e70c1d0ee042aeb52decac61
+      register: ghidra_download
+
+    - name: Unzip the Ghidra package under my home dir
+      unarchive:
+        src: /tmp/ghidra_9.1.2_PUBLIC_20200212.zip
+        dest: ~/.
+        remote_src: yes
