@@ -1,0 +1,12 @@
+- name: Ngrok
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install Ngrok
+      become: yes
+      unarchive:
+        src: https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+        dest: /usr/local/bin
+        remote_src: yes
+        creates: /usr/local/bin/ngrok
