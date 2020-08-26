@@ -1,0 +1,33 @@
+- name: VS Code (customization)
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install VS Code Extensions
+      command: code --install-extension {{ item }}
+      args:
+        creates: ~/.vscode/extensions/{{ item }}-*/package.json
+      loop:
+        - ms-python.python
+        - ms-azuretools.vscode-azurefunctions
+
+    - name: Add Core Tools APT package repository for Azure Functions development
+      become: yes
+      apt_repository:
+        repo: deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-{{ ansible_distribution_release }}-prod {{ ansible_distribution_release }} main
+        filename: dotnetdev
+        update_cache: no
+      register: apt_repository
+
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install azure-functions-core-tools-3
+      become: yes
+      apt:
+        package: azure-functions-core-tools-3
