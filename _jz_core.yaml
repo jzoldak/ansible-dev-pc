@@ -14,7 +14,7 @@
           export DOCKER_BUILDKIT=1
           export VAULT_ADDR=https://cbgsec.clearballot.com
 
-    - name: Install more helpful apt packages
+    - name: Install other helpful apt packages
       become: yes
       apt:
         package:
@@ -28,3 +28,4 @@
           - ldnsutils
           - qemu-kvm
           - magic-wormhole
+          - libnss3-tools
