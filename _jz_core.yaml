@@ -22,7 +22,6 @@
           - nmap
           - tree
           - gnome-system-tools
-          - black
           - shellcheck
           - usb-creator-gtk
           - ldnsutils

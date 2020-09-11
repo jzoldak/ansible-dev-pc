@@ -3,8 +3,6 @@
   connection: local
 
   tasks:
-    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
-
     - name: Install PIP and venv
       become: yes
       apt:
@@ -12,30 +10,20 @@
           - python3-pip
           - python3-venv
 
-    - name: Install python-language-server Python package
-      become: yes
-      pip:
-        executable: pip3
-        name: python-language-server[all]
-      when: not is_wsl
-
-    - name: Install psutil Python package
-      become: yes
-      pip:
-        name: psutil
-      when: not is_wsl
-
     - name: Install PyQt5 Python package (needed for ReText)
       become: yes
       pip:
         executable: pip3
         name: PyQt5
         extra_args: --only-binary pyqt5
-      when: not is_wsl
       
-    - name: Install Retext Python package
+    - name: Install Python packages
       become: yes
       pip:
         executable: pip3
-        name: ReText
-      when: not is_wsl
+        name:
+          - python-language-server[all]
+          - psutil
+          - ReText
+          - black
+          - appdirs  # needed for black
