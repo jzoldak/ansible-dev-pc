@@ -112,6 +112,9 @@
 # FortiClient
 - import_playbook: forticlient/core.yaml
 
+# Helm
+- import_playbook: helm/core.yaml
+
 ##### Applications (commercial license required)
 
 # Beyond Compare 4
