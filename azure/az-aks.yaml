@@ -1,0 +1,10 @@
+- name: Azure AKS
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install aks cli (kubectl, kubelogin)
+      become: yes
+      shell: az aks install-cli
+      args:
+        creates: /usr/local/bin/kubectl
