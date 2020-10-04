@@ -28,3 +28,4 @@
           - qemu-kvm
           - magic-wormhole
           - libnss3-tools
+          - graphviz
