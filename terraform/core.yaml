@@ -5,14 +5,14 @@
   tasks:
     - name: Download Terraform
       get_url:
-        url: https://releases.hashicorp.com/terraform/0.13.0/terraform_0.13.0_linux_amd64.zip
-        dest: /tmp/terraform_0.13.0_linux_amd64.zip
-        checksum: sha256:9ed437560faf084c18716e289ea712c784a514bdd7f2796549c735d439dbe378
+        url: https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip
+        dest: /tmp/terraform_0.13.5_linux_amd64.zip
+        checksum: sha256:f7b7a7b1bfbf5d78151cfe3d1d463140b5fd6a354e71a7de2b5644e652ca5147
       register: terraform_download
 
     - name: Move the terraform binary into the path
       become: yes
       unarchive:
-        src: /tmp/terraform_0.13.0_linux_amd64.zip
+        src: /tmp/terraform_0.13.5_linux_amd64.zip
         dest: /usr/local/bin
         remote_src: yes
