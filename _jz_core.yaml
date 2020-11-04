@@ -29,3 +29,4 @@
           - magic-wormhole
           - libnss3-tools
           - graphviz
+          - yamllint
