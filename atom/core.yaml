@@ -3,11 +3,30 @@
   connection: local
 
   tasks:
-    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
-
-    - name: Install via snap
+    - name: Add Atom APT package key
       become: yes
-      snap:
-        name: atom
-        classic: yes
-      when: not is_wsl
+      apt_key:
+        url: https://packagecloud.io/AtomEditor/atom/gpgkey
+
+    - name: Add Atom APT package repository
+      become: yes
+      apt_repository:
+        repo: deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main
+        filename: atom
+        update_cache: no
+      register: apt_repository
+
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      when: apt_repository.changed
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install Atom
+      become: yes
+      apt:
+        package:
+          - atom
