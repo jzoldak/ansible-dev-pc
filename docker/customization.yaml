@@ -15,3 +15,9 @@
             _images=$(docker images --all --quiet --filter 'dangling=true')
             [[ -z ${_images// } ]] || docker rmi $_images
           }
+
+    - name: adding existing user '{{ user }}' to group docker
+      user:
+        name: '{{ user }}'
+        groups: docker
+        append: yes
