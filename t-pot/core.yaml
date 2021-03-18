@@ -8,13 +8,11 @@
         repo: https://github.com/telekom-security/tpotce
         dest: /tmp/tpotce
         version: 20.06.2
-        creates: /tmp/tpotce
 
     - name: Create T-Pot config file
       copy:
         src: tpot.conf
         dest: /tmp/tpot.conf
-      creates: /tmp/tpot.conf
 
     - name: Install T-Pot
       shell: /tmp/tpotce/iso/installer/install.sh --conf=/tmp/tpot.conf
