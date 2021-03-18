@@ -16,8 +16,8 @@
             [[ -z ${_images// } ]] || docker rmi $_images
           }
 
-    - name: adding existing user '{{ user }}' to group docker
+    - name: adding existing user '{{ ansible_user }}' to group docker
       user:
-        name: '{{ user }}'
+        name: '{{ ansible_user }}'
         groups: docker
         append: yes
