@@ -1,0 +1,94 @@
+#########################################################################################
+#
+#  Note that import order here is important, so rearranging import lists
+#  is *not* recommended.
+#
+#########################################################################################
+
+- name: Configure machine for development work (with customizations)
+  hosts: 127.0.0.1
+  connection: local
+
+##### Operating system packages and configuration
+- import_playbook: core.yaml
+- import_playbook: _jz_core.yaml
+
+# Azure
+- import_playbook: azure/az.yaml
+- import_playbook: azure/azshell.yaml
+- import_playbook: azure/azcopy.yaml
+- import_playbook: azure/storage-explorer.yaml
+- import_playbook: azure/az-aks.yaml
+
+# Brave
+- import_playbook: brave/core.yaml
+
+# Broot
+- import_playbook: broot/core.yaml
+
+# Docker
+- import_playbook: docker/core.yaml
+
+# Flameshot
+- import_playbook: flameshot/core.yaml
+
+# git
+- import_playbook: git/core.yaml
+
+# golang
+- import_playbook: golang/core.yaml
+
+##### Applications (free)
+
+# Alacritty (high performance terminal application)
+- import_playbook: alacritty/core.yaml
+- import_playbook: alacritty/customization-jz.yaml
+
+# Google Chrome browser
+- import_playbook: google-chrome/core.yaml
+
+# RDP/X/VNC/SSH client
+- import_playbook: remmina/core.yaml
+
+# Install tmux
+- import_playbook: tmux/core.yaml
+
+# Install Atom
+- import_playbook: atom/core.yaml
+
+# Install fonts for starship
+- import_playbook: fonts/core.yaml
+
+# Install starship
+- import_playbook: starship/core.yaml
+
+# Install python packages
+- import_playbook: python-packages/core.yaml
+
+# Install terraform
+- import_playbook: terraform/core.yaml
+
+# Install cherrytree
+- import_playbook: cherrytree/core.yaml
+
+# Install vault
+- import_playbook: vault/core.yaml
+
+# Install the Google Cloud SDK
+- import_playbook: gcloud/core.yaml
+
+# Install the Bitwarden App
+- import_playbook: bitwarden/core.yaml
+
+# Manual stuff
+# Open up Firefox, log in and sync
+# git config --global user.name "Jesse Zoldak"
+# git config --global user.email "jesse.zoldak@clearballot.com"
+# TODO: copy over ssh keys and config, set the correct perms (0600), and do `ssh-add`
+# TODO: atom configuration - git clone git@gitlab.clearballot.com:jz/atom.git $HOME/.atom
+# TODO: Vault signing script
+# Log into vault via the UI, copy token, from a shell do "vault login" and give it the token
+# or save the ~/.vault-token file before blowing away the old machine
+# alias sign=/home/jz/bin/vault-ssh-sign.sh
+# TODO: Install the DisplayLink drivers
+# TODO: sudo -H python3 -m pip install hvac
