@@ -15,4 +15,6 @@
         dest: /tmp/tpot.conf
 
     - name: Install T-Pot
-      shell: /tmp/tpotce/iso/installer/install.sh --conf=/tmp/tpot.conf
+      shell: ./install.sh --conf=/tmp/tpot.conf
+      args:
+        chdir: /tmp/tpotce/iso/installer
