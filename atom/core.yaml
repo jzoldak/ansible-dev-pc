@@ -42,6 +42,8 @@
         - language-log
         - language-powershell
         - linter
+        - intentions
+        - busy-signal
         - linter-ui-default
         - linter-shellcheck
         - python-black
