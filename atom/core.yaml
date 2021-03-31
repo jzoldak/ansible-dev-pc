@@ -30,3 +30,21 @@
       apt:
         package:
           - atom
+
+    - name: Install atom packages
+      become: no
+      shell: apm install "{{ item }}"
+      args:
+        creates: "~/.atom/packages/{{ item }}"
+      loop:
+        - Sublime-Style-Column-Selection
+        - language-docker
+        - language-log
+        - language-powershell
+        - linter
+        - linter-ui-default
+        - linter-shellcheck
+        - python-black
+        - better-git-blame
+        - sort-lines
+        - split-diff
