@@ -30,3 +30,4 @@
           - libnss3-tools
           - graphviz
           - yamllint
+          - scdaemon
