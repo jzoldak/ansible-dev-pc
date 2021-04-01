@@ -1,0 +1,21 @@
+"*":
+  "better-git-blame":
+    searchInLayerEnabled: false
+  core:
+    disabledPackages: [
+      "intentions"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "atom-dark-ui"
+      "atom-dark-syntax"
+    ]
+  editor:
+    fontSize: 16
+  "language-log": {}
+  "linter-ui-default":
+    panelHeight: 209
+  "python-black":
+    fmtOnSave: false
+  welcome:
+    showOnStartup: false

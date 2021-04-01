@@ -31,8 +31,17 @@
         package:
           - atom
 
+    - name: Create .atom directory
+      file:
+        path: ~/.atom
+        state: directory
+
+    - name: Add atom config file
+      copy:
+        src: config.cson
+        dest: ~/.atom/config.cson
+
     - name: Install atom packages
-      become: no
       shell: apm install "{{ item }}"
       args:
         creates: "~/.atom/packages/{{ item }}"
