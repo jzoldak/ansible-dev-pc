@@ -55,6 +55,8 @@
         - busy-signal
         - linter-ui-default
         - linter-shellcheck
+        - linter-jsonlint
+        - pretty-json
         - python-black
         - better-git-blame
         - sort-lines
