@@ -31,3 +31,4 @@
           - graphviz
           - yamllint
           - scdaemon
+          - smbclient
