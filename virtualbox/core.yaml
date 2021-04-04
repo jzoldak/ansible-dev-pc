@@ -1,0 +1,33 @@
+- name: VirtualBox
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Add Oracle APT package keys
+      become: yes
+      apt_key:
+        url: "https://www.virtualbox.org/download/{{ item }}"
+      loop:
+        - oracle_vbox_2016.asc
+        - oracle_vbox.asc
+
+    - name: Add VirtualBox APT package repository
+      become: yes
+      apt_repository:
+        repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian focal contrib
+        update_cache: no
+      register: apt_repository
+
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      when: apt_repository.changed
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install VirtualBox
+      become: yes
+      apt:
+        package: virtualbox-6.1

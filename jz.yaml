@@ -54,6 +54,9 @@
 # Install the Bitwarden App
 - import_playbook: bitwarden/core.yaml
 
+# Install virtualbox
+- import_playbook: virtualbox/core.yaml
+
 # Manual stuff
 # Open up Firefox, log in and sync
 # git config --global user.name "Jesse Zoldak"
