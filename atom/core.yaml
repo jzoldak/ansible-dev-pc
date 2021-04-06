@@ -50,6 +50,7 @@
         - language-docker
         - language-log
         - language-powershell
+        - language-terraform
         - linter
         - intentions
         - busy-signal
