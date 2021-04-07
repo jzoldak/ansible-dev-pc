@@ -32,3 +32,12 @@
           - yamllint
           - scdaemon
           - smbclient
+
+    - name: Add useful aliases
+      blockinfile:
+        path: ~/.bash_aliases
+        create: yes
+        marker: "### {mark} Ansible managed: core aliases"
+        block: |
+          alias cert='/home/jz/bin/cert.sh'
+          alias sign='/home/jz/bin/vault-ssh-sign.sh'
