@@ -57,6 +57,14 @@
 # Install virtualbox
 - import_playbook: virtualbox/core.yaml
 
+- import_playbook: azure/az.yaml
+- import_playbook: azure/azshell.yaml
+- import_playbook: azure/azcopy.yaml
+- import_playbook: azure/storage-explorer.yaml
+- import_playbook: azure/az-aks.yaml
+
+- import_playbook: aws/core.yaml
+
 # Manual stuff
 # Open up Firefox, log in and sync
 # git config --global user.name "Jesse Zoldak"

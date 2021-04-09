@@ -11,12 +11,6 @@
 
 - import_playbook: core.yaml
 
-- import_playbook: azure/az.yaml
-- import_playbook: azure/azshell.yaml
-- import_playbook: azure/azcopy.yaml
-- import_playbook: azure/storage-explorer.yaml
-- import_playbook: azure/az-aks.yaml
-
 - import_playbook: brave/core.yaml
 - import_playbook: broot/core.yaml
 - import_playbook: docker/core.yaml
