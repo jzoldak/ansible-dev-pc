@@ -1,0 +1,18 @@
+- name: AWS CLI
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Download and Extract AWS cli installer
+      unarchive:
+        src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+        dest: /tmp
+        remote_src: yes
+        creates: /tmp/aws/install
+
+    - name: Install AWS cli
+      become: yes
+      shell: /tmp/aws/install
+      args:
+        chdir: /tmp/
+        creates: /usr/local/aws-cli
