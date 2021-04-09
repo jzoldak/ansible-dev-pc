@@ -1,0 +1,24 @@
+- name: K9S
+  hosts: 127.0.0.1
+  connection: local
+
+  vars:
+    k9s_version: v0.24.7
+    k9s_archive_checksum: 5096820f8c55708b059c3a01c5baeecca210c6b955740419d6b30b3132589619
+
+  tasks:
+    - name: Download K9S
+      get_url:
+        url: https://github.com/derailed/k9s/releases/download/{{ k9s_version }}/k9s_Linux_x86_64.tar.gz
+        dest: /tmp/k9s_Linux_x86_64.tar.gz
+        checksum: sha256:{{ k9s_archive_checksum }}
+      register: k9s_download
+
+    - name: Extract k9s
+      unarchive:
+        src: /tmp/k9s_Linux_x86_64.tar.gz
+        dest: $HOME/bin
+        exclude:
+        - README.md
+        - LICENSE
+        creates: $HOME/bin/k9s

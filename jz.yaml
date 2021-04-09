@@ -34,6 +34,7 @@
 - import_playbook: azure/az-aks.yaml
 
 - import_playbook: aws/core.yaml
+- import_playbook: k9s/core.yaml
 
 # Manual stuff
 # Open up Firefox, log in and sync
