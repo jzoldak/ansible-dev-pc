@@ -12,49 +12,19 @@
 - import_playbook: _jz_core.yaml
 - import_playbook: _jz_customized.yaml
 
-# Install tmux
 - import_playbook: tmux/core.yaml
-
-# Install Atom
 - import_playbook: atom/core.yaml
-
-# Install fonts for starship
 - import_playbook: fonts/core.yaml
-
-# Install starship
 - import_playbook: starship/core.yaml
-
-# Install python packages
 - import_playbook: python-packages/core.yaml
-
-# Install terraform
 - import_playbook: terraform/core.yaml
-
-# Install cherrytree
 - import_playbook: cherrytree/core.yaml
-
-# Install vault
 - import_playbook: vault/core.yaml
-
-# Install stuff for yubikey
-#- import_playbook: yubico/core.yaml
-
-# Install Signal companion app
 - import_playbook: signal/core.yaml
-
-# Install OBS
 - import_playbook: obs-studio/core.yaml
-
-# Install the Discord App
-
 - import_playbook: discord/core.yaml
-# Install the Google Cloud SDK
 - import_playbook: gcloud/core.yaml
-
-# Install the Bitwarden App
 - import_playbook: bitwarden/core.yaml
-
-# Install virtualbox
 - import_playbook: virtualbox/core.yaml
 
 - import_playbook: azure/az.yaml
@@ -70,10 +40,9 @@
 # git config --global user.name "Jesse Zoldak"
 # git config --global user.email "jesse.zoldak@clearballot.com"
 # TODO: copy over ssh keys and config, set the correct perms (0600), and do `ssh-add`
-# TODO: atom configuration - git clone git@gitlab.clearballot.com:jz/atom.git $HOME/.atom
+# TODO: atom configuration - just the config files not the packages
 # TODO: Vault signing script
 # Log into vault via the UI, copy token, from a shell do "vault login" and give it the token
 # or save the ~/.vault-token file before blowing away the old machine
-# alias sign=/home/jz/bin/vault-ssh-sign.sh
-# TODO: Install the DisplayLink drivers
+# TODO: Install the DisplayLink drivers (not required if installed with ubuntu)
 # TODO: sudo -H python3 -m pip install hvac
