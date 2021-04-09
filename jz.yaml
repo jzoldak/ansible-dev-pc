@@ -9,8 +9,8 @@
   hosts: 127.0.0.1
   connection: local
 
-- import_playbook: _jz_customized.yaml
 - import_playbook: _jz_core.yaml
+- import_playbook: _jz_customized.yaml
 
 # Install tmux
 - import_playbook: tmux/core.yaml
