@@ -28,19 +28,19 @@
     - name: Install Python
       become: yes
       apt: name="python3.9" state=present
-
-    - name: Create alternatives link for 3.8
-      become: yes
-      alternatives:
-        name: python3
-        link: /usr/bin/python3
-        path: /usr/bin/python3.8
-        priority: 20
-
-    - name: Create alternatives link for 3.9
-      become: yes
-      alternatives:
-        name: python3
-        link: /usr/bin/python3
-        path: /usr/bin/python3.9
-        priority: 10
+    # 
+    # - name: Create alternatives link for 3.8
+    #   become: yes
+    #   alternatives:
+    #     name: python3
+    #     link: /usr/bin/python3
+    #     path: /usr/bin/python3.8
+    #     priority: 20
+    #
+    # - name: Create alternatives link for 3.9
+    #   become: yes
+    #   alternatives:
+    #     name: python3
+    #     link: /usr/bin/python3
+    #     path: /usr/bin/python3.9
+    #     priority: 10
