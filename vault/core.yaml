@@ -16,3 +16,22 @@
         src: /tmp/vault_1.4.0_linux_amd64.zip
         dest: /usr/local/bin
         remote_src: yes
+
+    - name: Add script for signing ssh key
+      copy:
+        src: sign.sh
+        dest: /home/jz/bin/sign.sh
+
+    - name: Add script for generating 1 hr mtls employee cert
+      copy:
+        src: cert.sh
+        dest: /home/jz/bin/cert.sh
+
+    - name: Add useful aliases
+      blockinfile:
+        path: ~/.bash_aliases
+        create: yes
+        marker: "### {mark} Ansible managed: core aliases"
+        block: |
+          alias cert='/home/jz/bin/cert.sh'
+          alias sign='/home/jz/bin/sign.sh'
