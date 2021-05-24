@@ -35,7 +35,7 @@
         name: python3
         link: /usr/bin/python3
         path: /usr/bin/python3.8
-        priority: 1
+        priority: 20
 
     - name: Create alternatives link for 3.9
       become: yes
