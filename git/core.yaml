@@ -43,20 +43,38 @@
           - gitk
         state: latest
 
-    - name: Install ripgrep (Ubuntu 18.04 / Debian Stretch)
-      become: yes
-      apt:
-        deb: https://github.com/BurntSushi/ripgrep/releases/download/{{ RIPGREP_VERSION }}/ripgrep_{{ RIPGREP_VERSION }}_amd64.deb
-      when: ansible_distribution_release == 'bionic' or ansible_distribution_release == 'stretch'
+    - name: Set up git alias for branch
+      git_config:
+        name: alias.br
+        scope: global
+        value: branch
 
-    - name: Install ripgrep (others)
-      become: yes
-      apt:
-        package: ripgrep
-      when: ansible_distribution_release != 'bionic' and ansible_distribution_release != 'stretch'
+    - name: Set up git alias for checkout
+      git_config:
+        name: alias.co
+        scope: global
+        value: checkout
 
-    - name: Add global git config file
-      copy:
-        src: gitconfig
-        dest: $HOME/.gitconfig
-        mode: 0644
+    - name: Use vi for git editor
+      git_config:
+        name: core.editor
+        scope: global
+        value: vi
+
+    - name: Do not rebase on git pull by default
+      git_config:
+        name: pull.rebase
+        scope: global
+        value: false
+
+    - name: Set git user.email
+      git_config:
+        name: user.email
+        scope: global
+        value: jesse.zoldak@clearballot.com
+
+    - name: Set git user.name
+      git_config:
+        name: user.name
+        scope: global
+        value: Jesse Zoldak

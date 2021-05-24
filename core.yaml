@@ -42,6 +42,7 @@
           - snapd
           - uuid
           - xclip
+          - ripgrep
 
     - name: Create ~/bin
       file:

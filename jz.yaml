@@ -39,9 +39,6 @@
 
 # Manual stuff
 # Open up Firefox, log in and sync
-# git config --global user.name "Jesse Zoldak"
-# git config --global user.email "jesse.zoldak@clearballot.com"
-# git config --global pull.rebase false
 # TODO: copy over ssh keys and config, set the correct perms (0600)
 # TODO: ssh-add
 # TODO: Vault signing script
