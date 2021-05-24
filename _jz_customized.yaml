@@ -18,7 +18,6 @@
 - import_playbook: git/core.yaml
 - import_playbook: golang/core.yaml
 - import_playbook: postman/core.yaml
-- import_playbook: python/core.yaml
 
 - import_playbook: alacritty/core.yaml
 - import_playbook: alacritty/customization-jz.yaml

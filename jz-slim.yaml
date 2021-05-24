@@ -79,16 +79,3 @@
 
 # Install the Bitwarden App
 - import_playbook: bitwarden/core.yaml
-
-# Manual stuff
-# Open up Firefox, log in and sync
-# git config --global user.name "Jesse Zoldak"
-# git config --global user.email "jesse.zoldak@clearballot.com"
-# TODO: copy over ssh keys and config, set the correct perms (0600), and do `ssh-add`
-# TODO: atom configuration - git clone git@gitlab.clearballot.com:jz/atom.git $HOME/.atom
-# TODO: Vault signing script
-# Log into vault via the UI, copy token, from a shell do "vault login" and give it the token
-# or save the ~/.vault-token file before blowing away the old machine
-# alias sign=/home/jz/bin/vault-ssh-sign.sh
-# TODO: Install the DisplayLink drivers
-# TODO: sudo -H python3 -m pip install hvac

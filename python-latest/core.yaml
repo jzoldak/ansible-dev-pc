@@ -1,4 +1,4 @@
-- name: Python3.8
+- name: Python3.9
   hosts: 127.0.0.1
   connection: local
 
@@ -27,15 +27,7 @@
 
     - name: Install Python
       become: yes
-      apt: name="python3.8" state=present
-
-    - name: Create alternatives link for 3.6
-      become: yes
-      alternatives:
-        name: python3
-        link: /usr/bin/python3
-        path: /usr/bin/python3.6
-        priority: 1
+      apt: name="python3.9" state=present
 
     - name: Create alternatives link for 3.8
       become: yes
@@ -43,4 +35,12 @@
         name: python3
         link: /usr/bin/python3
         path: /usr/bin/python3.8
+        priority: 1
+
+    - name: Create alternatives link for 3.9
+      become: yes
+      alternatives:
+        name: python3
+        link: /usr/bin/python3
+        path: /usr/bin/python3.9
         priority: 10

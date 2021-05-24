@@ -16,7 +16,7 @@
         executable: pip3
         name: PyQt5
         extra_args: --only-binary pyqt5
-      
+
     - name: Install Python packages
       become: yes
       pip:
@@ -27,3 +27,4 @@
           - ReText
           - black
           - appdirs  # needed for black
+          - hvac

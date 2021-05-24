@@ -75,8 +75,8 @@
 - import_playbook: powershell-core/vscode.yaml
 
 # Python
-- import_playbook: python/core.yaml
-- import_playbook: python/vscode.yaml
+- import_playbook: python-latest/core.yaml
+- import_playbook: python-latest/vscode.yaml
 
 # Ruby
 - import_playbook: ruby/core.yaml
