@@ -1,0 +1,16 @@
+---
+- name: yamllint
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Create yamllint config file
+      copy:
+        src: config
+        dest: /home/jz/.config/yamllint/config
+
+    - name: Install yamllint
+      become: yes
+      apt:
+        package:
+          - yamllint
