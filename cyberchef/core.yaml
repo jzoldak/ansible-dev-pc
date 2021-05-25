@@ -1,0 +1,20 @@
+---
+- name: CyberChef
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Create CyberChef directory if it does not exist
+      become: yes
+      ansible.builtin.file:
+        path: /opt/cyberchef
+        state: directory
+        mode: '0755'
+
+    - name: Install CyberChef
+      become: yes
+      unarchive:
+        src: https://github.com/gchq/CyberChef/releases/download/v9.28.0/CyberChef_v9.28.0.zip
+        dest: /opt/cyberchef
+        remote_src: yes
+        creates: /opt/cyberchef/CyberChef_v9.28.0.html
