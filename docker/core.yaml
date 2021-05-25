@@ -2,12 +2,7 @@
   hosts: 127.0.0.1
   connection: local
 
-  vars:
-    docker_distro_release: "{{ ansible_distribution_release if ansible_distribution_release != 'eoan' else 'disco' }}"
-
   tasks:
-    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
-
     - name: Install Docker pre-requisites
       become: yes
       apt:
@@ -21,7 +16,7 @@
     - name: Add Docker APT package repository
       become: yes
       apt_repository:
-        repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ docker_distro_release }} stable
+        repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
         filename: docker
         update_cache: no
       register: apt_repository
@@ -46,7 +41,6 @@
       become: yes
       apt:
         package: docker-ce
-      when: not is_wsl
 
     - name: Enable Docker engine for current user
       become: yes
@@ -54,4 +48,22 @@
         name={{ lookup('env', "USER") }}
         groups=docker
         append=yes
-      when: not is_wsl
+
+    - name: Add custom Docker commands
+      blockinfile:
+        path: ~/.bashrc
+        marker: "### {mark} Ansible managed: Docker customization"
+        block: |
+          docker-clean() {
+            _containers=$(docker ps --quiet --filter 'status=exited')
+            [[ -z ${_containers// } ]] || docker rm $_containers
+
+            _images=$(docker images --all --quiet --filter 'dangling=true')
+            [[ -z ${_images// } ]] || docker rmi $_images
+          }
+
+    - name: adding existing user '{{ ansible_user }}' to group docker
+      user:
+        name: '{{ ansible_user }}'
+        groups: docker
+        append: yes
