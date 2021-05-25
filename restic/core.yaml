@@ -1,0 +1,33 @@
+---
+- name: Restic
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install restic
+      become: yes
+      apt:
+        package:
+          - restic
+
+    - name: Define files to backup
+      copy:
+        src: files-to-backup.txt
+        dest: /home/jz/files-to-backup.txt
+
+    - name: Add environment variable for restic repo
+      blockinfile:
+        path: ~/.bashrc
+        marker: "### {mark} Ansible managed: restic environment variables"
+        block: |
+          export RESTIC_REPOSITORY=/media/jz/JHWZ-backup/restic-repo
+          export RESTIC_PASSWORD="lagoon wildly glowworm"
+
+    - name: Add aliases for backup
+      blockinfile:
+        path: ~/.bash_aliases
+        create: yes
+        marker: "### {mark} Ansible managed: backup aliases"
+        block: |
+          alias backup_init='restic init'
+          alias backup='restic --verbose backup --files-from /home/jz/files-to-backup.txt'

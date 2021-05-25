@@ -1,0 +1,7 @@
+.aws
+.azure
+.gnupg
+keys
+.ssh
+.vault-token
+wg
