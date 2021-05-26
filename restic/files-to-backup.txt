@@ -1,5 +1,6 @@
 .aws
 .azure
+.docker
 .gnupg
 keys
 .ssh
