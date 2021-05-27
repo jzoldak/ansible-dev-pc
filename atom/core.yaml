@@ -46,21 +46,22 @@
       args:
         creates: "~/.atom/packages/{{ item }}"
       loop:
-        - Sublime-Style-Column-Selection
+        - atom-beautify
+        - atom-jinja2
+        - better-git-blame
+        - busy-signal
+        - intentions
         - language-docker
         - language-log
         - language-powershell
         - language-terraform
-        - atom-jinja2
         - linter
-        - intentions
-        - busy-signal
-        - linter-ui-default
-        - linter-shellcheck
         - linter-jsonlint
+        - linter-pylint
+        - linter-shellcheck
+        - linter-ui-default
         - linter-yaml
-        - atom-beautify
         - python-black
-        - better-git-blame
         - sort-lines
         - split-diff
+        - Sublime-Style-Column-Selection
