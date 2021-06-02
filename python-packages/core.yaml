@@ -26,6 +26,6 @@
           - python-language-server[all]
           - psutil
           - ReText
-          - black
+          - black[python2]
           - appdirs  # needed for black
           - hvac
