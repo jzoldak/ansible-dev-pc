@@ -38,11 +38,13 @@
           - htop
           - inetutils-traceroute
           - jq
+          - libcurl4-openssl-dev
+          - libssl-dev
           - net-tools
+          - ripgrep
           - snapd
           - uuid
           - xclip
-          - ripgrep
 
     - name: Create ~/bin
       file:
