@@ -3,15 +3,29 @@
   connection: local
 
   tasks:
-    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
-    - name: Download deb file for FortiClient
-      get_url:
-        url: https://filestore.fortinet.com/forticlient/downloads/FortiClientFullVPNInstaller_6.4.0.0851.deb
-        dest: /tmp/FortiClientFullVPNInstaller_6.4.0.0851.deb
-      when: not is_wsl
+    - name: Add Fortinet APT package key
+      become: yes
+      apt_key:
+        url: https://repo.fortinet.com/repo/7.0/ubuntu/DEB-GPG-KEY
+
+    - name: Add Fortinet APT package repository
+      become: yes
+      apt_repository:
+        repo: deb [arch=amd64] https://repo.fortinet.com/repo/7.0/ubuntu/ /bionic multiverse
+        filename: fortinet-multiverse
+        update_cache: no
+      register: apt_repository
+
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      when: apt_repository.changed
+      register: apt_update
+      retries: 5
+      until: apt_update is success
 
     - name: Install FortiClient
       become: yes
       apt:
-        deb: /tmp/FortiClientFullVPNInstaller_6.4.0.0851.deb
-      when: not is_wsl
+        package: forticlient
