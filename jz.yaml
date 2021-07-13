@@ -39,11 +39,12 @@
 - import_playbook: restic/core.yaml
 - import_playbook: cyberchef/core.yaml
 
+- import_playbook: libre-office/core.yaml
+
 # Manual stuff
 # Open up Firefox, log in and sync
-# TODO: copy over ssh keys and config, set the correct perms (0600)
 # TODO: ssh-add
 # TODO: Vault signing script
-# Log into vault via the UI, copy token, from a shell do "vault login" and give it the token
-# or save the ~/.vault-token file before blowing away the old machine
-# TODO: Install the DisplayLink drivers (not required if installed with ubuntu)
+# Log into vault via the UI, copy token, from a shell do `vault login`
+# and give it the token or save the ~/.vault-token file and do `backup`
+# before blowing away the old machine
