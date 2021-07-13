@@ -20,7 +20,7 @@
         path: ~/.bashrc
         marker: "### {mark} Ansible managed: restic environment variables"
         block: |
-          export RESTIC_REPOSITORY=/mnt/old_disk/jz/restic-repo
+          export RESTIC_REPOSITORY=/media/jz/JHWZ-backup/restic-repo
           export RESTIC_PASSWORD="lagoon wildly glowworm"
 
     - name: Add aliases for backup
