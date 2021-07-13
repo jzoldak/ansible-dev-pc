@@ -20,11 +20,13 @@
     - name: Add script for signing ssh key
       copy:
         src: sign.sh
+        mode: 0755
         dest: /home/jz/bin/sign.sh
 
     - name: Add script for generating 1 hr mtls employee cert
       copy:
         src: cert.sh
+        mode: 0755
         dest: /home/jz/bin/cert.sh
 
     - name: Add useful aliases
