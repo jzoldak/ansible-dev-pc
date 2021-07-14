@@ -4,27 +4,27 @@
 
   tasks:
     - name: Install required package ffmpeg
-      become: yes
+      become: true
       apt:
         package: ffmpeg
-        update_cache: yes
+        update_cache: true
 
     - name: Add APT package source (Ubuntu)
-      become: yes
+      become: true
       apt_repository:
         repo: ppa:obsproject/obs-studio
       register: apt_repository
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install OBS Studio
-      become: yes
+      become: true
       apt:
         package: obs-studio

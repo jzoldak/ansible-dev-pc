@@ -4,12 +4,12 @@
 
   tasks:
     - name: Add Helm APT package key
-      become: yes
+      become: true
       apt_key:
         url: https://baltocdn.com/helm/signing.asc
 
     - name: Add Helm APT package repository
-      become: yes
+      become: true
       apt_repository:
         repo: deb https://baltocdn.com/helm/stable/debian/ all main
         filename: helm-stable-debian
@@ -17,15 +17,15 @@
       register: apt_repository
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install Helm
-      become: yes
+      become: true
       apt:
         package: helm

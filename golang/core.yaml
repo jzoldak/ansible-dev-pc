@@ -7,22 +7,22 @@
 
   tasks:
     - name: Create binary folder
-      become: yes
+      become: true
       file:
         path: /opt/google/go{{ go_version }}
         state: directory
 
     - name: Download go
-      become: yes
+      become: true
       unarchive:
         src: https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz
         dest: /opt/google/go{{ go_version }}
-        remote_src: yes
+        remote_src: true
         creates: /opt/google/go{{ go_version }}/go/bin/go
       register: go_download
 
     - name: Create symlink to /usr/local/go
-      become: yes
+      become: true
       file:
         path: /usr/local/go
         src: /opt/google/go{{ go_version }}/go
@@ -34,7 +34,7 @@
         state: directory
 
     - name: Clean $GOPATH/pkg
-      become: yes
+      become: true
       file:
         path: ~/dev/go/pkg
         state: absent

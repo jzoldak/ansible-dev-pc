@@ -4,12 +4,12 @@
 
   tasks:
     - name: Add Microsoft APT package key
-      become: yes
+      become: true
       apt_key:
         url: https://packages.microsoft.com/keys/microsoft.asc
 
     - name: Add Azure CLI APT package repository
-      become: yes
+      become: true
       apt_repository:
         repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli {{ ansible_distribution_release }} main
         filename: azure-cli
@@ -17,15 +17,15 @@
       register: apt_repository
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install Azure CLI
-      become: yes
+      become: true
       apt:
         package: azure-cli

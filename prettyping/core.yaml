@@ -4,7 +4,7 @@
 
   tasks:
     - name: Download prettyping
-      become: yes
+      become: true
       get_url:
         url: https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping
         dest: /usr/local/bin/prettyping

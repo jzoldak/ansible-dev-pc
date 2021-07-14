@@ -4,12 +4,12 @@
 
   tasks:
     - name: Add Scooter Software APT package key
-      become: yes
+      become: true
       apt_key:
         url: https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware
 
     - name: Add Beyond Compare 4 APT package repository
-      become: yes
+      become: true
       apt_repository:
         repo: deb http://www.scootersoftware.com/ bcompare4 non-free
         filename: scootersoftware
@@ -17,15 +17,15 @@
       register: apt_repository
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install Beyond Compare 4
-      become: yes
+      become: true
       apt:
         package: bcompare

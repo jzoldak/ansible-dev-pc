@@ -6,14 +6,14 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Add Insync APT package key (Ubuntu)
-      become: yes
+      become: true
       apt_key:
         keyserver: hkp://keyserver.ubuntu.com:80
         id: ACCAF35C
       when: not is_wsl and ansible_distribution == 'Ubuntu'
 
     - name: Add Insync APT package repository (Ubuntu)
-      become: yes
+      become: true
       apt_repository:
         repo: deb http://apt.insynchq.com/ubuntu bionic non-free contrib
         filename: insync
@@ -22,16 +22,16 @@
       when: not is_wsl and ansible_distribution == 'Ubuntu'
 
     - name: Update APT package list (Ubuntu)
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: not is_wsl and apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install Insync (Ubuntu)
-      become: yes
+      become: true
       apt:
         package:
           - insync

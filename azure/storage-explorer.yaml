@@ -6,7 +6,7 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Install Storage Explorer
-      become: yes
+      become: true
       command: snap install storage-explorer
       args:
         creates: /snap/bin/storage-explorer
@@ -14,19 +14,19 @@
       register: storage_explorer_installed
 
     - name: Connect Storage Explorer to Password Manager
-      become: yes
+      become: true
       command: snap connect storage-explorer:password-manager-service :password-manager-service
       when: not is_wsl and storage_explorer_installed.changed
 
     - name: Ensure local applications folder exists
-      become: yes
+      become: true
       file:
         path: /usr/local/share/applications
         state: directory
       when: not is_wsl
 
     - name: Add Storage Explorer desktop file
-      become: yes
+      become: true
       copy:
         src: storage-explorer.desktop
         dest: /usr/local/share/applications/storage-explorer.desktop

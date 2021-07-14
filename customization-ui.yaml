@@ -280,7 +280,7 @@
         src: "{{ item.item.url }}"
         dest: "~/.local/share/gnome-shell/extensions/{{ item.item.name }}"
         creates: "~/.local/share/gnome-shell/extensions/{{ item.item.name }}/metadata.json"
-        remote_src: yes
+        remote_src: true
       loop: "{{ new_extensions.results }}"
       when: not is_wsl and item.changed
 
@@ -290,20 +290,20 @@
       when: not is_wsl and item.changed
 
     - name: Install Fonts (via APT)
-      become: yes
+      become: true
       apt:
         package: "{{ item }}"
       loop: "{{ fonts_apt }}"
       when: not is_wsl
 
     - name: Install Microsoft TTF fonts
-      become: yes
+      become: true
       apt:
         package: ttf-mscorefonts-installer
       when: not is_wsl and ansible_distribution != 'Debian'
 
     - name: Install Fonts (downloaded)
-      become: yes
+      become: true
       get_url:
         url: "{{ item }}"
         dest: /usr/local/share/fonts/
@@ -312,25 +312,25 @@
       when: not is_wsl
 
     - name: Update font cache
-      become: yes
+      become: true
       command: fc-cache -sv
       when: not is_wsl and fonts_downloaded.changed
 
     - name: Add Gnome themes APT package key
-      become: yes
+      become: true
       apt_key:
         keyserver: hkp://keyserver.ubuntu.com:80
         id: 89993A70
       when: not is_wsl
 
     - name: Install Gnome Tweaks
-      become: yes
+      become: true
       apt:
         package: gnome-tweaks
       when: not is_wsl and ansible_distribution_release != 'stretch'
 
     - name: Install numix Gnome theme
-      become: yes
+      become: true
       apt:
         package: numix-gtk-theme
       when: not is_wsl
@@ -342,13 +342,13 @@
       when: not is_wsl
 
     - name: Install paper Gnome icon theme
-      become: yes
+      become: true
       apt:
         deb: /tmp/paper-icon-theme.deb
       when: not is_wsl
 
     - name: Install PIP
-      become: yes
+      become: true
       apt:
         package:
           - python-pip
@@ -356,7 +356,7 @@
       when: not is_wsl
 
     - name: Install psutil Python package
-      become: yes
+      become: true
       pip:
         name: psutil
       when: not is_wsl

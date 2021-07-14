@@ -5,6 +5,6 @@
 
   tasks:
     - name: Install via snap
-      become: yes
+      become: true
       snap:
         name: libreoffice

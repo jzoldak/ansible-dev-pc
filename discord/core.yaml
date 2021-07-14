@@ -4,6 +4,6 @@
 
   tasks:
     - name: Install Discord App
-      become: yes
+      become: true
       apt:
         deb: https://discord.com/api/download?platform=linux&format=deb

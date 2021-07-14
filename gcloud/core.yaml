@@ -4,12 +4,12 @@
 
   tasks:
     - name: Import the Google Cloud public key
-      become: yes
+      become: true
       apt_key:
         url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
     - name: Add the Cloud SDK distribution URI as a package source
-      become: yes
+      become: true
       apt_repository:
         repo: deb https://packages.cloud.google.com/apt cloud-sdk main
         filename: google-cloud-sdk
@@ -17,16 +17,16 @@
       register: apt_repository
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install google-cloud-sdk
-      become: yes
+      become: true
       apt:
         package:
           - google-cloud-sdk

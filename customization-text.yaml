@@ -16,7 +16,7 @@
       when: is_wsl
 
     - name: Install APT packages
-      become: yes
+      become: true
       apt:
         package:
           - colordiff
@@ -73,7 +73,7 @@
           fortune
 
     - name: Disable sudo password requirement
-      become: yes
+      become: true
       lineinfile:
         path: /etc/sudoers
         line: "{{ lookup('env', 'USER') }} ALL=(ALL) NOPASSWD: ALL"

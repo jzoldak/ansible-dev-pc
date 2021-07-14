@@ -4,7 +4,7 @@
 
   tasks:
     - name: Enable HTTPS APT support
-      become: yes
+      become: true
       apt:
         name: "{{ packages }}"
       vars:
@@ -15,20 +15,20 @@
           - gnupg
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Upgrade to latest APT packages
-      become: yes
+      become: true
       apt:
         upgrade: yes
 
     - name: Install core packages
-      become: yes
+      become: true
       apt:
         package:
           - curl
@@ -65,7 +65,7 @@
       package_facts: {}
 
     - name: Add dm-crypt to /etc/initramfs-tools/modules
-      become: yes
+      become: true
       lineinfile:
         path: /etc/initramfs-tools/modules
         line: dm-crypt

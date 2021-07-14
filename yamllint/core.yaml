@@ -10,7 +10,7 @@
         dest: /home/jz/.config/yamllint/config
 
     - name: Install yamllint
-      become: yes
+      become: true
       apt:
         package:
           - yamllint

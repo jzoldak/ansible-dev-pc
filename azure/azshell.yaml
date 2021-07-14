@@ -7,21 +7,21 @@
 
   tasks:
     - name: Create azshell folder
-      become: yes
+      become: true
       file:
         path: /opt/azshell
         state: directory
 
     - name: Download azshell
-      become: yes
+      become: true
       unarchive:
         src: https://github.com/yangl900/azshell/releases/download/{{ azshell_version }}/azshell_linux_64-bit.tar.gz
         dest: /opt/azshell
-        remote_src: yes
+        remote_src: true
         creates: /opt/azshell/azshell
 
     - name: Create shortcut to azshell
-      become: yes
+      become: true
       file:
         path: /usr/local/bin/azshell
         src: /opt/azshell/azshell

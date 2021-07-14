@@ -6,7 +6,7 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Install Zoom
-      become: yes
+      become: true
       apt:
         deb: https://zoom.us/client/latest/zoom_amd64.deb
       when: not is_wsl

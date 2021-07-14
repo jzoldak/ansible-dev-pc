@@ -6,23 +6,23 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Install Postman
-      become: yes
+      become: true
       unarchive:
         src: https://dl.pstmn.io/download/latest/linux64
         dest: /opt
-        remote_src: yes
+        remote_src: true
         creates: /opt/Postman/Postman
       when: not is_wsl
 
     - name: Ensure local applications folder exists
-      become: yes
+      become: true
       file:
         path: /usr/local/share/applications
         state: directory
       when: not is_wsl
 
     - name: Add Postman desktop file
-      become: yes
+      become: true
       copy:
         src: postman.desktop
         dest: /usr/local/share/applications/postman.desktop

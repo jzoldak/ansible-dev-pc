@@ -7,13 +7,13 @@
 
   tasks:
     - name: Add Microsoft APT package key
-      become: yes
+      become: true
       apt_key:
         url: https://packages.microsoft.com/keys/microsoft.asc
       when: ansible_distribution == 'Debian' or ansible_distribution_release == 'bionic'
 
     - name: Add Microsoft APT package repository
-      become: yes
+      become: true
       apt_repository:
         repo: deb [arch=amd64] https://packages.microsoft.com/{{ ansible_distribution | lower }}/{{ pwsh_distro_version }}/prod {{ ansible_distribution_release }} main
         filename: microsoft-prod
@@ -22,22 +22,22 @@
       when: ansible_distribution == 'Debian' or ansible_distribution_release == 'bionic'
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install PowerShell Core via APT (Debian/Ubuntu 18.04)
-      become: yes
+      become: true
       apt:
         package: powershell
       when: ansible_distribution == 'Debian' or ansible_distribution_release == 'bionic'
 
     - name: Install PowerShell Core via SNAP (Ubuntu 18.10+)
-      become: yes
+      become: true
       command: snap install --classic powershell
       args:
         creates: /snap/bin/pwsh

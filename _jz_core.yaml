@@ -14,7 +14,7 @@
           export VAULT_ADDR=https://cbgsec.clearballot.com
 
     - name: Install other helpful apt packages
-      become: yes
+      become: true
       apt:
         package:
           - whois

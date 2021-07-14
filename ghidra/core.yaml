@@ -4,18 +4,18 @@
 
   tasks:
     - name: Add Amazon Corretto APT package key
-      become: yes
+      become: true
       apt_key:
         url: https://apt.corretto.aws/corretto.key
 
     - name: Add Amazon Corretto APT package repository
-      become: yes
+      become: true
       apt_repository:
         repo: deb https://apt.corretto.aws stable main
-        update_cache: yes
+        update_cache: true
 
     - name: Install Amazon Coretto Java 11
-      become: yes
+      become: true
       apt:
         package: java-11-amazon-corretto-jdk
     
@@ -30,4 +30,4 @@
       unarchive:
         src: /tmp/ghidra_9.1.2_PUBLIC_20200212.zip
         dest: ~/.
-        remote_src: yes
+        remote_src: true

@@ -11,11 +11,11 @@
       register: vault_download
 
     - name: Move the vault binary into the path
-      become: yes
+      become: true
       unarchive:
         src: /tmp/vault_1.4.0_linux_amd64.zip
         dest: /usr/local/bin
-        remote_src: yes
+        remote_src: true
 
     - name: Add script for signing ssh key
       copy:

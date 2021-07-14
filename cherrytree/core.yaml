@@ -6,7 +6,7 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Install Cherrytree via snap
-      become: yes
+      become: true
       snap:
         name: cherrytree
       when: not is_wsl

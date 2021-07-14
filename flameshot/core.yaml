@@ -6,7 +6,7 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Install Flameshot
-      become: yes
+      become: true
       apt:
         package: flameshot
       when: not is_wsl and ansible_distribution_release != 'stretch'

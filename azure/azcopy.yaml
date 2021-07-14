@@ -7,22 +7,22 @@
 
   tasks:
     - name: Create azcopy folder
-      become: yes
+      become: true
       file:
         path: /opt/azcopy
         state: directory
 
     - name: Download azcopy
-      become: yes
+      become: true
       unarchive:
         src: https://aka.ms/downloadazcopy-v10-linux/
         dest: /opt/azcopy
         mode: 0777
-        remote_src: yes
+        remote_src: true
         creates: /opt/azcopy/azcopy_linux_amd64_{{ azcopy_version }}/azcopy
 
     - name: Create shortcut to azcopy
-      become: yes
+      become: true
       file:
         path: /usr/local/bin/azcopy
         src: /opt/azcopy/azcopy_linux_amd64_{{ azcopy_version }}/azcopy

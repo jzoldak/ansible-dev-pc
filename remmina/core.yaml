@@ -6,7 +6,7 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Add Remmina APT package repository (Ubuntu)
-      become: yes
+      become: true
       apt_repository:
         repo: ppa:remmina-ppa-team/remmina-next
         filename: remmina
@@ -15,7 +15,7 @@
       when: not is_wsl and ansible_distribution == 'Ubuntu'
 
     - name: Add Backports repository (Debian Stretch)
-      become: yes
+      become: true
       apt_repository:
         repo: deb http://deb.debian.org/debian stretch-backports main
         filename: backports
@@ -24,23 +24,23 @@
       when: not is_wsl and ansible_distribution_release == 'stretch'
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository_1.changed or apt_repository_2.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install Remmina (Debian Stretch)
-      become: yes
+      become: true
       apt:
         package: remmina
         default_release: stretch-backports
       when: not is_wsl and ansible_distribution_release == 'stretch'
 
     - name: Install Remmina (others)
-      become: yes
+      become: true
       apt:
         package: remmina
       when: not is_wsl and ansible_distribution_release != 'stretch'

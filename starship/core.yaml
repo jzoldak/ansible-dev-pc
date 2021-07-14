@@ -9,13 +9,13 @@
       
   tasks:
     - name: Install Powerline and Firacode fonts (via APT)
-      become: yes
+      become: true
       apt:
         package: "{{ item }}"
       loop: "{{ fonts_apt }}"
     
     - name: Install Starship via snap
-      become: yes
+      become: true
       snap:
         name: starship
 

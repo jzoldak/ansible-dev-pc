@@ -4,6 +4,6 @@
 
   tasks:
     - name: Install Bitwarden via snap
-      become: yes
+      become: true
       snap:
         name: bitwarden

@@ -6,7 +6,7 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Install QEMU/KVM
-      become: yes
+      become: true
       apt:
         package:
           - bridge-utils
@@ -18,7 +18,7 @@
       when: not is_wsl
 
     - name: Enable QEMU/KVM for current user
-      become: yes
+      become: true
       user:
         name={{ lookup('env', "USER") }}
         groups=libvirt

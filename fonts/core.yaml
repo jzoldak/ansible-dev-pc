@@ -11,7 +11,7 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Install Powerline and Firacode fonts (via APT)
-      become: yes
+      become: true
       apt:
         package: "{{ item }}"
       loop: "{{ fonts_apt }}"

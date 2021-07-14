@@ -4,7 +4,7 @@
 
   tasks:
     - name: Download broot
-      become: yes
+      become: true
       get_url:
         url: https://dystroy.org/broot/download/x86_64-linux/broot
         dest: /usr/local/bin/broot

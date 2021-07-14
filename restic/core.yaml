@@ -5,7 +5,7 @@
 
   tasks:
     - name: Install restic
-      become: yes
+      become: true
       apt:
         package:
           - restic

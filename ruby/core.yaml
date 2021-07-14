@@ -4,7 +4,7 @@
 
   tasks:
     - name: Install pre-requisites
-      become: yes
+      become: true
       apt:
         package:
           - gcc

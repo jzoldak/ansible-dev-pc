@@ -10,13 +10,13 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Add Mono APT package key
-      become: yes
+      become: true
       apt_key:
         keyserver: hkp://keyserver.ubuntu.com:80
         id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
     - name: Add Mono APT package repository
-      become: yes
+      become: true
       apt_repository:
         repo: deb https://download.mono-project.com/repo/{{ ansible_distribution | lower }} stable-{{ mono_distro_release }} main
         filename: mono-official-stable
@@ -24,16 +24,16 @@
       register: apt_repository
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install Mono
-      become: yes
+      become: true
       apt:
         package:
           - mono-complete
@@ -41,6 +41,6 @@
       register: mono_install
 
     - name: Disable Mono binfmt on WSL
-      become: yes
+      become: true
       shell: update-binfmts --disable cli
       when: is_wsl and mono_install.changed

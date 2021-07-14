@@ -4,7 +4,7 @@
 
   tasks:
     - name: Install aks cli (kubectl, kubelogin)
-      become: yes
+      become: true
       shell: az aks install-cli
       args:
         creates: /usr/local/bin/kubectl

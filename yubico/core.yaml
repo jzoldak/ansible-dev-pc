@@ -6,15 +6,15 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Add Yubico APT package repository
-      become: yes
+      become: true
       apt_repository:
         repo: ppa:yubico/stable
-        update_cache: yes
+        update_cache: true
       register: apt_repository
       when: not is_wsl
 
     - name: Install Yubico tools
-      become: yes
+      become: true
       apt:
         package:
           - wget

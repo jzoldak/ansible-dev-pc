@@ -6,23 +6,23 @@
     - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
 
     - name: Add APT package source (Ubuntu)
-      become: yes
+      become: true
       apt_repository:
         repo: ppa:mmstick76/alacritty
       register: apt_repository
       when: not is_wsl and ansible_distribution == 'Ubuntu' and 'Pop!_OS' not in hostvars[inventory_hostname].ansible_facts.lsb.description
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: apt_repository.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
     - name: Install Alacritty
-      become: yes
+      become: true
       apt:
         package: alacritty
       when: not is_wsl and ansible_distribution == 'Ubuntu'

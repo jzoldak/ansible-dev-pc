@@ -21,16 +21,16 @@
         unarchive:
           src: https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{ toolbox_ver }}.tar.gz
           dest: /tmp
-          remote_src: yes
+          remote_src: true
           creates: /tmp/jetbrains-toolbox-{{ toolbox_ver }}/jetbrains-toolbox
 
       - name: Install Toolbox
-        become: yes
+        become: true
         copy:
           src: /tmp/jetbrains-toolbox-{{ toolbox_ver }}/jetbrains-toolbox
           dest: /usr/local/bin/jetbrains-toolbox
           mode: 0755
-          remote_src: yes
+          remote_src: true
 
       - name: Clean up /tmp/jetbrains-toolbox-{{ toolbox_ver }}
         file:
