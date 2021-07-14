@@ -1,3 +1,4 @@
+---
 - name: VS Code (customization)
   hosts: 127.0.0.1
   connection: local
@@ -8,26 +9,29 @@
       args:
         creates: ~/.vscode/extensions/{{ item }}-*/package.json
       loop:
-        - ms-python.python
-        - ms-azuretools.vscode-azurefunctions
+        - GitLab.gitlab-workflow  # Integrates GitLab to VS Code
+        - ms-azuretools.vscode-azurestorage  # Manage Azure Storage accounts
+        - ms-azuretools.vscode-docker  # Docker for VS Code
+        - ms-python.python  # IntelliSense (Pylance), linting, debugging, etc.
+        - ms-vscode.azure-account  # Azure account and sign-in
+        - pkief.material-icon-theme  # Nice icons for stuff
+        - redhat.vscode-yaml  # YAML language support
 
-    - name: Add Core Tools APT package repository for Azure Functions development
-      become: yes
+    - name: Add Core Tools APT package repo for Azure Functions development
+      become: true
       apt_repository:
         repo: deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-{{ ansible_distribution_release }}-prod {{ ansible_distribution_release }} main
         filename: dotnetdev
-        update_cache: no
+        update_cache: false
       register: apt_repository
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
+        update_cache: true
       register: apt_update
-      retries: 5
-      until: apt_update is success
 
     - name: Install azure-functions-core-tools-3
-      become: yes
+      become: true
       apt:
         package: azure-functions-core-tools-3

@@ -1,56 +1,29 @@
+---
 - name: VS Code
   hosts: 127.0.0.1
   connection: local
 
   tasks:
-    - set_fact: is_wsl={{ lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
-
     - name: Add Microsoft APT package key
-      become: yes
+      become: true
       apt_key:
         url: https://packages.microsoft.com/keys/microsoft.asc
-      when: not is_wsl
 
     - name: Add VS Code APT package repository
-      become: yes
+      become: true
       apt_repository:
         repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
         filename: vscode
-        update_cache: no
+        update_cache: false
       register: apt_repository
-      when: not is_wsl
 
     - name: Update APT package list
-      become: yes
+      become: true
       apt:
-        update_cache: yes
-      when: not is_wsl and apt_repository.changed
+        update_cache: true
       register: apt_update
-      retries: 5
-      until: apt_update is success
 
     - name: Install VS Code
-      become: yes
+      become: true
       apt:
         package: code
-      when: not is_wsl
-
-    - name: Create shortcut to Windows ~/.vscode
-      file:
-        path: ~/.vscode
-        src: /mnt/c/Users/{{ lookup('ENV', 'USER' )}}/.vscode
-        state: link
-      when: is_wsl
-
-    - name: Ensure ~/.config folder exists
-      file:
-        path: ~/.config
-        state: directory
-      when: is_wsl
-
-    - name: Create shortcut to Windows ~/.config/Code
-      file:
-        path: ~/.config/Code
-        src: /mnt/c/Users/{{ lookup('ENV', 'USER' )}}/AppData/Roaming/Code
-        state: link
-      when: is_wsl

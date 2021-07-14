@@ -41,6 +41,9 @@
 
 - import_playbook: libre-office/core.yaml
 
+- import_playbook: vscode/core.yaml
+- import_playbook: vscode/jz-customization.yaml
+
 # Manual stuff
 # Open up Firefox, log in and sync
 # TODO: ssh-add
