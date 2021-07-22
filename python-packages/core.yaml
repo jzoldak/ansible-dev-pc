@@ -24,9 +24,10 @@
       pip:
         executable: pip3
         name:
-          - python-language-server[all]
-          - psutil
-          - ReText
-          - black[python2]
           - appdirs  # needed for black
+          - black[python2]
           - hvac
+          - pre-commit
+          - psutil
+          - python-language-server[all]
+          - ReText
