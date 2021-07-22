@@ -9,7 +9,9 @@
       args:
         creates: ~/.vscode/extensions/{{ item }}-*/package.json
       loop:
+        - eamodio.gitlens  # GitLens
         - GitLab.gitlab-workflow  # Integrates GitLab to VS Code
+        - mhutchie.git-graph  # Git Graph
         - ms-azuretools.vscode-azurestorage  # Manage Azure Storage accounts
         - ms-azuretools.vscode-docker  # Docker for VS Code
         - ms-python.python  # IntelliSense (Pylance), linting, debugging, etc.
