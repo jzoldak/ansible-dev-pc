@@ -1,0 +1,50 @@
+- name: Podman
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Add Podman APT package key
+      become: true
+      apt_key:
+        url: https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_20.04/Release.key
+
+    - name: Add Podman APT package repository
+      become: true
+      apt_repository:
+        repo: deb [arch=amd64] http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /
+        filename: libcontainers
+        update_cache: no
+      register: apt_repository
+
+    - name: Update APT package list
+      become: true
+      apt:
+        update_cache: true
+      when: apt_repository.changed
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install Podman
+      become: true
+      apt:
+        package:
+          - podman
+
+    - name: Create docker alias for podman
+      blockinfile:
+        path: ~/.bash_aliases
+        create: yes
+        marker: "### {mark} Ansible managed: alias docker"
+        block: |
+          alias docker=podman
+
+    - name: Create directory for rootless config
+      file:
+        path: ~/.config/containers/
+        state: directory
+
+    - name: Add local config file
+      copy:
+        src: containers.conf
+        dest: ~/.config/containers/containers.conf
