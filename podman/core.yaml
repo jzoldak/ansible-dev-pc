@@ -37,6 +37,12 @@
       shell: podman completion -f /etc/bash_completion.d/podman bash
       when: installed_podman.changed
 
+    - name: Add config file
+      become: true
+      copy:
+        src: containers.conf
+        dest: /etc/containers/containers.conf
+
     - name: Create docker alias for podman
       blockinfile:
         path: ~/.bash_aliases
@@ -44,13 +50,3 @@
         marker: "### {mark} Ansible managed: alias docker"
         block: |
           alias docker=podman
-
-    - name: Create directory for rootless config
-      file:
-        path: ~/.config/containers/
-        state: directory
-
-    - name: Add local config file
-      copy:
-        src: containers.conf
-        dest: ~/.config/containers/containers.conf
