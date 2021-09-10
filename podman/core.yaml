@@ -30,6 +30,12 @@
       apt:
         package:
           - podman
+      register: installed_podman
+
+    - name: Configure shell completion
+      become: true
+      shell: podman completion -f /etc/bash_completion.d/podman bash
+      when: installed_podman.changed
 
     - name: Create docker alias for podman
       blockinfile:
