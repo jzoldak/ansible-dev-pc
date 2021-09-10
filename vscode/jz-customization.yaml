@@ -15,6 +15,7 @@
         - ms-azuretools.vscode-azurestorage  # Manage Azure Storage accounts
         - ms-azuretools.vscode-docker  # Docker for VS Code
         - ms-python.python  # IntelliSense (Pylance), linting, debugging, etc.
+        - ms-vscode-remote.remote-containers # Developing in OCI containers
         - ms-vscode.azure-account  # Azure account and sign-in
         - pkief.material-icon-theme  # Nice icons for stuff
         - redhat.vscode-yaml  # YAML language support
