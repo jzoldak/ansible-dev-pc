@@ -25,11 +25,12 @@
       retries: 5
       until: apt_update is success
 
-    - name: Install Podman
+    - name: Install Podman and Skopeo
       become: true
       apt:
         package:
           - podman
+          - skopeo
       register: installed_podman
 
     - name: Configure shell completion
@@ -50,3 +51,9 @@
         marker: "### {mark} Ansible managed: alias docker"
         block: |
           alias docker=podman
+
+    - name: Add acr login script
+      copy:
+        src: podman-login.sh
+        dest: ~/bin/podman_login.sh
+        mode: 0700
