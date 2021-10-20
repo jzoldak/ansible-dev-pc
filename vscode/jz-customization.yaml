@@ -19,6 +19,7 @@
         - ms-vscode.azure-account  # Azure account and sign-in
         - pkief.material-icon-theme  # Nice icons for stuff
         - redhat.vscode-yaml  # YAML language support
+        - hashicorp.terraform  # Terraform support
 
     - name: Add Core Tools APT package repo for Azure Functions development
       become: true
