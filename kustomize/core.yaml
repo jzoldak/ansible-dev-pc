@@ -1,0 +1,11 @@
+- name: Kustomize
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install Kustomize
+      shell:
+        chdir: $HOME/bin
+        cmd: "curl -s 'https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh' | bash"
+      args:
+        creates: $HOME/bin/kustomize
