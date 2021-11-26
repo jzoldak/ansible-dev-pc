@@ -1,0 +1,10 @@
+- name: ArgoCD
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Download ArgoCD CLI
+      get_url:
+        url: https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+        dest: $HOME/bin/argocd
+        mode: 0755
