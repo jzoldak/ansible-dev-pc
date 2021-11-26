@@ -3,8 +3,8 @@
   connection: local
 
   vars:
-    k9s_version: v0.24.15
-    k9s_archive_checksum: 0590c32c20cd22416f2a06fad9155257c156e32c60e8757bf96d5a28cb1720dd
+    k9s_version: v0.25.6
+    k9s_archive_checksum: b83e1d9e3862a97e9e2ecff7fa471f455fb3a047759d0234f712951e0e94c40f
 
   tasks:
     - name: Download K9S
