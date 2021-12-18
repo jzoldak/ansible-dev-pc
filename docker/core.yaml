@@ -34,7 +34,9 @@
       become: true
       apt:
         package:
+          - docker-ce
           - docker-ce-cli
+          - containerd.io
           - docker-compose
 
     - name: Install Docker engine
