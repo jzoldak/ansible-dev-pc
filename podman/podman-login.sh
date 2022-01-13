@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 podman-acr-login() {
-    local -r username='jesse.zoldak@clearballot.com'
+    local -r username='00000000-0000-0000-0000-000000000000'
 
 
     acr_password() {

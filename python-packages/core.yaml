@@ -27,6 +27,7 @@
           - appdirs  # needed for black
           - black[python2]
           - hvac
+          - podman-compose
           - pre-commit
           - psutil
           - python-language-server[all]
