@@ -10,7 +10,6 @@
         package:
           - restic
 
-    # restore with: restic restore --verify --target $HOME latest 
     - name: Define files to backup
       copy:
         src: files-to-backup.txt
