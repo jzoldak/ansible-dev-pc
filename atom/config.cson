@@ -2,20 +2,22 @@
   "better-git-blame":
     searchInLayerEnabled: false
   core:
-    disabledPackages: [
-      "intentions"
-    ]
     telemetryConsent: "no"
     themes: [
       "atom-dark-ui"
       "atom-dark-syntax"
     ]
   editor:
-    fontSize: 16
+    fontSize: 18
+  "exception-reporting":
+    userId: "05fca886-cce3-4a89-9c62-4b38efb29949"
   "language-log": {}
+  "linter-pylint":
+    disableTimeout: true
   "linter-ui-default":
     panelHeight: 209
   "python-black":
     fmtOnSave: false
+    lineLength: 79
   welcome:
     showOnStartup: false

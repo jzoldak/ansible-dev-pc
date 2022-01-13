@@ -62,6 +62,7 @@
         - linter-ui-default
         - linter-yaml
         - python-black
+        - python-isort
         - sort-lines
         - split-diff
         - Sublime-Style-Column-Selection
