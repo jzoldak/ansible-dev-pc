@@ -9,17 +9,24 @@
       args:
         creates: ~/.vscode/extensions/{{ item }}-*/package.json
       loop:
-        - eamodio.gitlens  # GitLens
-        - GitLab.gitlab-workflow  # Integrates GitLab to VS Code
-        - mhutchie.git-graph  # Git Graph
-        - ms-azuretools.vscode-azurestorage  # Manage Azure Storage accounts
-        - ms-azuretools.vscode-docker  # Docker for VS Code
-        - ms-python.python  # IntelliSense (Pylance), linting, debugging, etc.
-        - ms-vscode-remote.remote-containers # Developing in OCI containers
-        - ms-vscode.azure-account  # Azure account and sign-in
-        - pkief.material-icon-theme  # Nice icons for stuff
-        - redhat.vscode-yaml  # YAML language support
-        - hashicorp.terraform  # Terraform support
+        - eamodio.gitlens
+        - eamodio.toggle-excluded-files                   # Toggle Excluded Files
+        - editorconfig.editorconfig                       # EditorConfig for VS Code
+        - gitlab.gitlab-workflow
+        - golang.go
+        - hashicorp.terraform
+        - mhutchie.git-graph
+        - ms-python.python
+        - ms-vscode-remote.vscode-remote-extensionpack    # Remote Development
+        - ms-vscode.azure-account
+        - ms-vsliveshare.vsliveshare-pack                 # Live Share Extension Pack
+        - pflannery.vscode-versionlens                    # Version Lens
+        - piotrpalarz.vscode-gitignore-generator
+        - pkief.material-icon-theme                       # Material Icon Theme
+        - redhat.vscode-yaml
+        - streetsidesoftware.code-spell-checker           # Code Spell Checker
+        - thenikso.github-plus-theme                      # GitHub Plus Theme
+        - visualstudioexptteam.vscodeintellicode          # Visual Studio IntelliCode
 
     - name: Add Core Tools APT package repo for Azure Functions development
       become: true
