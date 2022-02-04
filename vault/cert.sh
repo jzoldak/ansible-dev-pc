@@ -12,6 +12,6 @@ set -euo pipefail
 /home/jz/bin/sign.sh
 cd /home/jz/repos/devops/pki-client
 source venv/bin/activate
-./generate_certs.py -l --nss-import --ca "cbg-employee-mtls-root-2021"
+./generate_certs.py -l --nss-import --ca "cbg-employee-mtls-root-blue"
 deactivate
 echo "Signed cert will expire in 1 hour."
