@@ -44,14 +44,6 @@
         src: containers.conf
         dest: /etc/containers/containers.conf
 
-    - name: Create docker alias for podman
-      blockinfile:
-        path: ~/.bash_aliases
-        create: yes
-        marker: "### {mark} Ansible managed: alias docker"
-        block: |
-          alias docker=podman
-
     - name: Add acr login script
       copy:
         src: podman-login.sh
