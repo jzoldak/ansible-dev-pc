@@ -18,16 +18,16 @@
       become: true
       apt:
         package: java-11-amazon-corretto-jdk
-    
+
     - name: Download Ghidra
       get_url:
-        url: https://ghidra-sre.org/ghidra_9.1.2_PUBLIC_20200212.zip
-        dest: /tmp/ghidra_9.1.2_PUBLIC_20200212.zip
-        checksum: sha256:ebe3fa4e1afd7d97650990b27777bb78bd0427e8e70c1d0ee042aeb52decac61
+        url: https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.1.2_build/ghidra_10.1.2_PUBLIC_20220125.zip
+        dest: /tmp/ghidra_10.1.2_PUBLIC_20220125.zip
+        checksum: sha256:ac96fbdde7f754e0eb9ed51db020e77208cdb12cf58c08657a2ab87cb2694940
       register: ghidra_download
 
     - name: Unzip the Ghidra package under my home dir
       unarchive:
-        src: /tmp/ghidra_9.1.2_PUBLIC_20200212.zip
+        src: /tmp/ghidra_10.1.2_PUBLIC_20220125.zip
         dest: ~/.
         remote_src: true
