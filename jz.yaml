@@ -45,10 +45,7 @@
 - import_playbook: vscode/core.yaml
 - import_playbook: vscode/jz-customization.yaml
 
+- import_playbook: docker/core.yaml
+
 # Manual stuff
 # Open up Firefox, log in and sync
-# TODO: ssh-add
-# TODO: Vault signing script
-# Log into vault via the UI, copy token, from a shell do `vault login`
-# and give it the token or save the ~/.vault-token file and do `backup`
-# before blowing away the old machine
