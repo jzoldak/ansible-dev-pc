@@ -14,7 +14,7 @@
     - name: Install CyberChef
       become: true
       unarchive:
-        src: https://github.com/gchq/CyberChef/releases/download/v9.28.0/CyberChef_v9.28.0.zip
+        src: https://github.com/gchq/CyberChef/releases/download/v9.32.3/CyberChef_v9.32.3.zip
         dest: /opt/cyberchef
         remote_src: true
-        creates: /opt/cyberchef/CyberChef_v9.28.0.html
+        creates: /opt/cyberchef/CyberChef_v9.32.3.html
