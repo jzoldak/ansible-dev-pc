@@ -7,7 +7,7 @@
     - name: Create yamllint config file
       copy:
         src: config
-        dest: /home/jz/.config/yamllint/config
+        dest: /home/jz/.config/yamllint/
 
     - name: Install yamllint
       become: true
