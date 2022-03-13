@@ -1,10 +1,11 @@
 .aws
 .azure
 .docker
+.gitignore
 .gnupg
-keys
 .ssh
 .vault-token
-wg
 Documents
+keys
 Pictures
+wg

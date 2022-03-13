@@ -84,3 +84,9 @@
         name: init.defaultBranch
         scope: global
         value: main
+
+    - name: Set global gitignore
+      git_config:
+        name: core.excludesfile
+        scope: global
+        value: ~/.gitignore
