@@ -1,0 +1,23 @@
+---
+- name: BurpSuite
+  hosts: 127.0.0.1
+  connection: local
+
+  vars:
+    burp_version: 2022.2.3
+    burp_install_sh_sha256: e1e4b2f04c3eca357df185fa456c4e4ce87ea79f1bd6dafbf51d81eb02ba15f1
+
+  tasks:
+    - name: Download BurpSuite install script
+      get_url:
+        url: "https://portswigger-cdn.net/burp/releases/download?product=community&version={{ burp_version }}&type=Linux"
+        dest: /tmp/burpsuite_community_linux.sh
+        checksum: sha256:{{ burp_install_sh_sha256 }}
+        mode: 0777
+      register: burp_download
+
+    - name: Run the burp install script
+      shell:
+        chdir: /tmp
+        cmd: /tmp/burpsuite_community_linux.sh
+        creates: $HOME/BurpSuiteCommunity
