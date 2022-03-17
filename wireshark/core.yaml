@@ -1,0 +1,17 @@
+- name: Wireshark
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Add Wireshark APT package repository
+      become: true
+      apt_repository:
+        repo: ppa:wireshark-dev/stable
+        update_cache: true
+      register: apt_repository
+
+    - name: Install Wireshark
+      become: true
+      apt:
+        package:
+          - wireshark
