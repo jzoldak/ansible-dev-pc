@@ -1,0 +1,11 @@
+- name: K3S
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install K3s from official script
+      shell:
+        cmd: "curl -sfL https://get.k3s.io | sh"
+        warn: false
+      args:
+        creates: /usr/local/bin/k3s
