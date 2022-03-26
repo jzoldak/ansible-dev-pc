@@ -1,0 +1,11 @@
+- name: K3D
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install K3D from official script
+      shell:
+        cmd: "curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash"
+        warn: false
+      args:
+        creates: /usr/local/bin/k3d
