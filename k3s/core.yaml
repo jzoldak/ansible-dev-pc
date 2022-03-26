@@ -5,7 +5,7 @@
   tasks:
     - name: Install K3s from official script
       shell:
-        cmd: "curl -sfL https://get.k3s.io | sh"
+        cmd: "curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_ENABLE=true sh"
         warn: false
       args:
         creates: /usr/local/bin/k3s
