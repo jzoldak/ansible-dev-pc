@@ -17,17 +17,18 @@
       become: true
       apt:
         package:
-          - whois
-          - nmap
-          - tree
           - gnome-system-tools
-          - shellcheck
-          - usb-creator-gtk
-          - ldnsutils
-          - qemu-kvm
-          - magic-wormhole
-          - libnss3-tools
           - graphviz
+          - ldnsutils
+          - libnss-myhostname
+          - libnss3-tools
+          - magic-wormhole
+          - nmap
+          - qemu-kvm
           - scdaemon
+          - shellcheck
           - smbclient
+          - tree
+          - usb-creator-gtk
+          - whois
           - wireguard
