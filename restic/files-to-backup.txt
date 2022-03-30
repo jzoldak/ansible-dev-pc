@@ -1,5 +1,6 @@
 .aws
 .azure
+.config/Code/User
 .docker
 .gitignore
 .gnupg
