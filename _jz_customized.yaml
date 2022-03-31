@@ -22,11 +22,14 @@
 - import_playbook: alacritty/core.yaml
 - import_playbook: alacritty/customization-jz.yaml
 
+- import_playbook: kubectl/core.yaml
+- import_playbook: kubectl/customization.yaml
+- import_playbook: kubectl/vscode.yaml
+
 - import_playbook: google-chrome/core.yaml
 - import_playbook: remmina/core.yaml
 - import_playbook: slack/core.yaml
 - import_playbook: vlc/core.yaml
-- import_playbook: zoom/core.yaml
 - import_playbook: forticlient/core.yaml
 - import_playbook: helm/core.yaml
 - import_playbook: spotify/core.yaml
