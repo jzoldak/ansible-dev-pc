@@ -9,6 +9,7 @@
         marker: "### {mark} Ansible managed: kubectl shortcuts"
         block: |
           alias k=kubectl
+          complete -F __start_kubectl k
           alias kc='kubectl config'
           alias kcg='kubectl config get-contexts'
           alias kcu='kubectl config use-context'
