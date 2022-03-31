@@ -46,3 +46,13 @@
       become: true
       apt:
         package: azure-functions-core-tools-3
+
+    - name: Override default VS Code preferences
+      copy:
+        src: settings.json
+        dest: ~/.config/Code/User/settings.json
+
+    - name: Override default VS Code key bindings
+      copy:
+        src: keybindings.json
+        dest: ~/.config/Code/User/keybindings.json

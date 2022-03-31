@@ -3,5 +3,10 @@
     {
         "key": "ctrl+j",
         "command": "editor.action.joinLines"
+    },
+    {
+      "key": "ctrl+k",
+      "command": "deleteAllRight",
+      "when": "terminalFocus"
     }
 ]
