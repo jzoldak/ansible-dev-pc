@@ -4,6 +4,7 @@
 .docker
 .gitignore
 .gnupg
+.hass
 .ssh
 .vault-token
 Documents
