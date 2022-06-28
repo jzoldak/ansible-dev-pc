@@ -2,70 +2,166 @@
   hosts: 127.0.0.1
   connection: local
 
+  vars:
+    distribution_fallback:
+      'Pop!_OS': 'Ubuntu'
+    distribution_release_fallback:
+      'impish': 'hirsute'
+    is_mac: "{{ ansible_distribution == 'MacOSX' }}"
+    is_ubuntu: "{{ ansible_distribution == 'Ubuntu' or ansible_distribution == 'Pop!_OS' }}"
+    machine_arch: "{{ 'Darwin-x86_64' if is_mac else 'Linux-x86_64' }}"
+    nvidia_distribution_version_fallback:
+      '21.10': '20.04'
+
   tasks:
-    - name: Install Docker pre-requisites
-      become: true
-      apt:
-        package: gnupg-agent
+    - set_fact: is_wsl={{ not is_mac and lookup('file', '/proc/version') is regex('(M|m)icrosoft') }}
+
+    # Linux
+
+    - name: Determine Docker Compose latest version
+      shell:
+        cmd: "curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -i \"browser_download_url.*linux-x86_64\\\"\" | cut -d : -f 2,3 | tr -d \\\""
+        warn: false
+      register: docker_compose_version
+      when: not is_mac
+
+    - name: Install Docker Compose (Linux)
+      become: yes
+      get_url:
+        url: "{{ docker_compose_version.stdout }}"
+        dest: /usr/local/bin/docker-compose
+        mode: 0755
+      when: not is_mac
 
     - name: Add Docker APT package key
-      become: true
+      become: yes
       apt_key:
-        url: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
+        url: https://download.docker.com/linux/{{ distribution_fallback[ansible_distribution] | default(ansible_distribution) | lower }}/gpg
+      when: not is_mac
 
     - name: Add Docker APT package repository
-      become: true
+      become: yes
       apt_repository:
-        repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+        repo: deb [arch=amd64] https://download.docker.com/linux/{{ distribution_fallback[ansible_distribution] | default(ansible_distribution) | lower }} {{ distribution_release_fallback[ansible_distribution_release] | default(ansible_distribution_release) }} stable
         filename: docker
         update_cache: no
-      register: apt_repository
+      register: apt_repository_docker
+      when: not is_mac
 
     - name: Update APT package list
-      become: true
+      become: yes
       apt:
-        update_cache: true
-      when: apt_repository.changed
+        update_cache: yes
+      when: apt_repository_docker.changed
       register: apt_update
       retries: 5
       until: apt_update is success
 
-    - name: Install Docker CLI components
-      become: true
+    - name: Install Docker engine (Linux)
+      become: yes
       apt:
-        package:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-          - docker-compose
+        package: "{{ item }}"
+      loop:
+        - docker-ce
+        - docker-ce-cli
+      when: not is_mac
 
-    - name: Install Docker engine
-      become: true
-      apt:
-        package: docker-ce
+    - name: Add Docker startup on WSL boot
+      blockinfile:
+        path: ~/.bashrc
+        marker: "### {mark} Ansible managed: Docker startup"
+        block: |
+          [ -S /var/run/docker.sock ] || sudo service docker start
+      when: is_wsl
 
     - name: Enable Docker engine for current user
-      become: true
+      become: yes
       user:
         name={{ lookup('env', "USER") }}
         groups=docker
         append=yes
+      when: not is_mac
 
-    - name: Add custom Docker commands
-      blockinfile:
-        path: ~/.bashrc
-        marker: "### {mark} Ansible managed: Docker customization"
-        block: |
-          docker-clean() {
-            _containers=$(docker ps --quiet --filter 'status=exited')
-            [[ -z ${_containers// } ]] || docker rm $_containers
+    # Linux (Ubuntu)
 
-            _images=$(docker images --all --quiet --filter 'dangling=true')
-            [[ -z ${_images// } ]] || docker rmi $_images
-          }
+    - name: Add Mesa package source
+      become: yes
+      apt_repository:
+        repo: ppa:kisak/kisak-mesa
+      register: apt_repository_mesa
+      when: is_ubuntu
 
-    - name: adding existing user '{{ ansible_user }}' to group docker
-      user:
-        name: '{{ ansible_user }}'
-        groups: docker
-        append: yes
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      when: is_ubuntu and apt_repository_mesa.changed
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install Mesa libraries and utilities
+      become: yes
+      apt:
+        package: "{{ item }}"
+      loop:
+        - libglapi-mesa
+        - libglx-mesa0
+        - mesa-utils
+      when: is_ubuntu
+
+    - name: Add NVIDIA container runtime APT package key
+      become: yes
+      apt_key:
+        url: https://nvidia.github.io/nvidia-container-runtime/gpgkey
+      when: is_ubuntu
+
+    - name: Add NVIDIA container runtime APT package source
+      become: yes
+      get_url:
+        dest: /etc/apt/sources.list.d/nvidia-container-runtime.list
+        url: https://nvidia.github.io/nvidia-container-runtime/ubuntu{{ nvidia_distribution_version_fallback[ansible_distribution_version] | default(ansible_distribution_version) }}/nvidia-container-runtime.list
+      register: apt_repository_nvidia
+      when: is_ubuntu
+
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      when: is_ubuntu and apt_repository_nvidia.changed
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install NVIDIA container runtime
+      become: yes
+      apt:
+        package: nvidia-container-runtime
+      when: is_ubuntu
+
+    # macOS
+
+    - name: Install Docker Compose (macOS)
+      homebrew:
+        name: docker-compose
+      when: is_mac
+
+    - name: Install Docker engine (macOS)
+      homebrew_cask:
+        name: docker
+      when: is_mac
+
+    # Common
+
+    - name: Determine Docker Machine latest version
+      shell:
+        cmd: "curl -s https://api.github.com/repos/docker/machine/releases/latest | grep \"browser_download_url.*{{ machine_arch }}\\\"\" | cut -d : -f 2,3 | tr -d \\\""
+        warn: false
+      register: docker_machine_version
+
+    - name: Install Docker Machine
+      become: yes
+      get_url:
+        url: "{{ docker_machine_version.stdout }}"
+        dest: /usr/local/bin/docker-machine
+        mode: 0755
