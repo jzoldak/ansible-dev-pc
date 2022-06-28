@@ -3,7 +3,7 @@
   connection: local
 
   vars:
-    azcopy_version: 10.14.0
+    azcopy_version: 10.15.0
 
   tasks:
     - name: Create azcopy folder
