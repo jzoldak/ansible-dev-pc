@@ -35,5 +35,4 @@
 - import_playbook: helm/core.yaml
 - import_playbook: spotify/core.yaml
 
-- import_playbook: dotnet-core/core.yaml
 - import_playbook: podman/core.yaml
