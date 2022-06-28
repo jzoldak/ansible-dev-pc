@@ -14,7 +14,7 @@
     - name: Add VirtualBox APT package repository
       become: true
       apt_repository:
-        repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian focal contrib
+        repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian jammy contrib
         update_cache: no
       register: apt_repository
 
