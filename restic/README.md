@@ -8,6 +8,7 @@
 
 # Back up other stuff, e.g. $HOME/repos
 `printenv | grep RESTIC`
+
 `export RESTIC_REPOSITORY=/media/jz/JHWZ-backup/repos`
 
 ## Backup
