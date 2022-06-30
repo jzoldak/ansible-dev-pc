@@ -46,6 +46,7 @@
 - import_playbook: vscode/jz-customization.yaml
 
 - import_playbook: docker/core.yaml
+- import_playbook: nodejs/core.yaml
 
 # Manual stuff
 # Open up Firefox, log in and sync
