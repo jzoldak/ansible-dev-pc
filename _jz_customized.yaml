@@ -16,6 +16,7 @@
 - import_playbook: flameshot/core.yaml
 - import_playbook: git/core.yaml
 - import_playbook: golang/core.yaml
+- import_playbook: golang/customization-jz.yaml
 - import_playbook: postman/core.yaml
 - import_playbook: yamllint/core.yaml
 - import_playbook: vscode/core.yaml

@@ -1,0 +1,9 @@
+- name: Golang (customization)
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+  - name: "Golang install tfsec"
+    command: go install github.com/aquasecurity/tfsec/cmd/tfsec@latest
+    args:
+      creates: ~/dev/go/bin/tfsec
