@@ -4,8 +4,8 @@
   connection: local
 
   vars:
-    burp_version: 2022.2.3
-    burp_install_sh_sha256: e1e4b2f04c3eca357df185fa456c4e4ce87ea79f1bd6dafbf51d81eb02ba15f1
+    burp_version: 2022.6.1
+    burp_install_sh_sha256: ced6f082fa26f7b4806cc484cedd965d204d86c796ada14ee4c6a84fcf37c4a0
 
   tasks:
     - name: Download BurpSuite install script
