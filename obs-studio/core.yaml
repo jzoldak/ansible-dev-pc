@@ -28,3 +28,17 @@
       become: true
       apt:
         package: obs-studio
+
+    - name: Add script for resetting the video device for OBS Studio
+      copy:
+        src: reset-video.sh
+        mode: 0755
+        dest: ~/bin/reset-video.sh
+
+    - name: Add useful aliases
+      blockinfile:
+        path: ~/.bash_aliases
+        create: yes
+        marker: "### {mark} Ansible managed: obs-studio helper aliases"
+        block: |
+          alias reset-video='~/bin/reset-video.sh'
