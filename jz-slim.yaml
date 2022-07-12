@@ -71,9 +71,6 @@
 # Install cherrytree
 - import_playbook: cherrytree/core.yaml
 
-# Install vault
-- import_playbook: vault/core.yaml
-
 # Install the Google Cloud SDK
 - import_playbook: gcloud/core.yaml
 

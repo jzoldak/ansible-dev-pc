@@ -20,7 +20,6 @@
 - import_playbook: python-packages/core.yaml
 - import_playbook: terraform/core.yaml
 - import_playbook: cherrytree/core.yaml
-- import_playbook: vault/core.yaml
 - import_playbook: signal/core.yaml
 - import_playbook: obs-studio/core.yaml
 - import_playbook: discord/core.yaml

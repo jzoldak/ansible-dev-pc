@@ -6,7 +6,6 @@
 .gnupg
 .hass
 .ssh
-.vault-token
 Documents
 keys
 Pictures
