@@ -32,7 +32,6 @@
 - import_playbook: remmina/core.yaml
 - import_playbook: slack/core.yaml
 - import_playbook: vlc/core.yaml
-- import_playbook: forticlient/core.yaml
 - import_playbook: helm/core.yaml
 - import_playbook: spotify/core.yaml
 
