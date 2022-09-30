@@ -1,0 +1,17 @@
+- name: Avidemux
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Download Avidemux app image
+      get_url:
+        url: https://versaweb.dl.sourceforge.net/project/avidemux/avidemux/2.8.0/avidemux_2.8.0.appImage
+        dest: $HOME/bin/avidemux_2.8.0.appImage
+        mode: 0755
+
+    - name: Add alias to run Avidemux
+      blockinfile:
+        path: ~/.bashrc
+        marker: "### {mark} Ansible managed: Avidemux shortcuts"
+        block: |
+          alias avidemux=$HOME/bin/avidemux_2.8.0.appImage
