@@ -1,0 +1,32 @@
+- name: LinuxShowPlayer
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    # - name: Install LinuxShowPlayer
+    #   become: true
+    #   apt:
+    #     package:
+    #       - linux-show-player
+
+    # This is how I got it running manually:
+    # sudo apt install flatpak
+    # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    # flatpak install flathub org.kde.Platform//5.15-21.08
+    # flatpak install --from https://github.com/FrancescoCeruti/linux-show-player/releases/download/ci-develop/LinuxShowPlayer-develop-x86_64.flatpak
+    # flatpak run org.linux_show_player.LinuxShowPlayer
+
+    - name: Add alias to run LinuxShowPlayer
+      blockinfile:
+        path: ~/.bash_aliases
+        create: yes
+        marker: "### {mark} Ansible managed: linux show player aliases"
+        block: |
+          alias show-player='flatpak run org.linux_show_player.LinuxShowPlayer'
+
+    - name: Install mpv and socat for video triggering
+      become: true
+      apt:
+        package:
+          - mpv
+          - socat
