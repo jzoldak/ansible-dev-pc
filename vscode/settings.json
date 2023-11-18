@@ -1,65 +1,64 @@
 {
-    "breadcrumbs.enabled": false,
-    "debug.console.fontSize": 16,
-    "diffEditor.renderSideBySide": false,
-    "editor.codeLens": false,
-    "editor.fontSize": 16,
-    "editor.minimap.enabled": false,
-    "editor.renderControlCharacters": false,
-    "editor.renderWhitespace": "none",
-    "files.trimTrailingWhitespace": true,
-    "git.confirmSync": false,
-    "gitlab.instanceUrl": "https://gitlab.clearballot.com",
-    "markdown.preview.fontSize": 16,
-    "python.formatting.blackArgs": [
-        "-l 79"
-    ],
-    "python.linting.enabled": false,
-    "python.linting.lintOnSave": false,
-    "python.linting.pylintEnabled": false,
-    "python.testing.autoTestDiscoverOnSaveEnabled": false,
-    "python.testing.pytestPath": "/usr/local/bin/pytest",
-    "terminal.integrated.allowChords": false,
-    "workbench.startupEditor": "none",
-    "redhat.telemetry.enabled": false,
-    "remote.containers.dockerPath": "podman",
-    "remote.containers.dockerComposePath": "podman-compose",
-    "remote.containers.repositoryConfigurationPaths": [
-        "/home/jz/repos/jz/vs-code-env"
-    ],
-    "scm.inputFontSize": 14,
-    "terminal.integrated.fontSize": 16,
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "Solarized Dark",
-    "workbench.iconTheme": "material-icon-theme",
-    "linter.linters": {
-        "shellcheck": {
-            "enabled": false
-        },
-        "yamllint": {
-            "capabilities": [
-                "ignore-line"
-            ],
-            "command": [
-                "yamllint",
-                "--format",
-                "parsable",
-                [
-                    "$config",
-                    "--config-file",
-                    "$config"
-                ],
-                "-"
-            ],
-            "configFiles": [
-                ".yamllint.yml"
-            ],
-            "enabled": true,
-            "languages": [
-                "yaml"
-            ],
-            "name": "yamllint",
-            "url": "https://github.com/adrienverge/yamllint"
-        }
+  "breadcrumbs.enabled": false,
+  "debug.console.fontSize": 16,
+  "diffEditor.renderSideBySide": false,
+  "editor.codeLens": false,
+  "editor.fontSize": 16,
+  "editor.minimap.enabled": false,
+  "editor.renderControlCharacters": false,
+  "editor.renderWhitespace": "none",
+  "files.trimTrailingWhitespace": true,
+  "git.confirmSync": false,
+  "markdown.preview.fontSize": 16,
+  "python.formatting.blackArgs": [
+    "-l 79"
+  ],
+  "python.linting.enabled": false,
+  "python.linting.lintOnSave": false,
+  "python.linting.pylintEnabled": false,
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+  "python.testing.pytestPath": "/usr/local/bin/pytest",
+  "terminal.integrated.allowChords": false,
+  "workbench.startupEditor": "none",
+  "redhat.telemetry.enabled": false,
+  "remote.containers.dockerPath": "podman",
+  "remote.containers.dockerComposePath": "podman-compose",
+  "remote.containers.repositoryConfigurationPaths": [
+    "/home/jz/repos/jz/vs-code-env"
+  ],
+  "scm.inputFontSize": 14,
+  "terminal.integrated.fontSize": 16,
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Solarized Dark",
+  "workbench.iconTheme": "material-icon-theme",
+  "linter.linters": {
+    "shellcheck": {
+      "enabled": false
+    },
+    "yamllint": {
+      "capabilities": [
+        "ignore-line"
+      ],
+      "command": [
+        "yamllint",
+        "--format",
+        "parsable",
+        [
+          "$config",
+          "--config-file",
+          "$config"
+        ],
+        "-"
+      ],
+      "configFiles": [
+        ".yamllint.yml"
+      ],
+      "enabled": true,
+      "languages": [
+        "yaml"
+      ],
+      "name": "yamllint",
+      "url": "https://github.com/adrienverge/yamllint"
     }
   }
+}

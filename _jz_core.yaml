@@ -3,16 +3,6 @@
   connection: local
 
   tasks:
-    - name: Add custom environment variable values
-      blockinfile:
-        path: ~/.bashrc
-        marker: "### {mark} Ansible managed: custom environment variables"
-        block: |
-          export GITLAB_REGISTRY=registry.clearballot.com
-          export AZURE_REGISTRY=cbgsec.azurecr.io
-          export DOCKER_BUILDKIT=1
-          export VAULT_ADDR=https://cbgsec.clearballot.com
-
     - name: Install other helpful apt packages
       become: true
       apt:
