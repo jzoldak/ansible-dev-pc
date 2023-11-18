@@ -65,19 +65,19 @@
       git_config:
         name: pull.rebase
         scope: global
-        value: false
+        value: "false"
 
     - name: Set git user.email
       git_config:
         name: user.email
         scope: global
-        value: jesse.zoldak@clearballot.com
+        value: jessezoldak@alum.mit.edu
 
     - name: Set git user.name
       git_config:
         name: user.name
         scope: global
-        value: Jesse Zoldak
+        value: JZ
 
     - name: Set default branch to main
       git_config:
