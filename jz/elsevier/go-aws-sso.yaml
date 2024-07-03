@@ -24,20 +24,12 @@
         id: "544785467518"
         role: EnterpriseAdmin
         region: us-east-2
-      - name: em-playground-nonprod-admin
-        id: 027582772594
-        role: EnterpriseAdmin
-        region: us-east-2
       - name: em-prod-admin
         id: "453836842642"
         role: EnterpriseAdmin
         region: us-east-2
       - name: em-tools-prod-admin
         id: "806064321552"
-        role: EnterpriseAdmin
-        region: us-east-2
-      - name: em-sandbox-prod-admin
-        id: "534259481618"
         role: EnterpriseAdmin
         region: us-east-2
 
