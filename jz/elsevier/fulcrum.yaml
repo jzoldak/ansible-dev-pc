@@ -8,7 +8,6 @@
         name: "{{ item }}"
       loop:
       - gawk
-      - graphviz
       - helm
       - istioctl
       - kubectl
@@ -18,10 +17,3 @@
       - tfenv
       - tflint
       - tfsec
-      
-      # This doesn't seem to work today. 
-      #- warrensbox/tap/tgswitch
-
-      # This one requires gcc. Skipping for now,
-      # we don't use eks anyhow
-      # - weaveworks/tap/eksctl
