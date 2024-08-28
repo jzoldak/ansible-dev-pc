@@ -1,0 +1,16 @@
+- name: XMind
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Download XMind
+      get_url:
+        url: https://dl3.xmind.app/Xmind-for-Linux-amd64bit-24.04.10311-202405240010.deb
+        dest: /tmp/Xmind.deb
+        mode: 0755
+
+    - name: Install XMind
+      become: yes
+      apt:
+        deb: /tmp/Xmind.deb
+        state: present

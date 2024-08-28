@@ -18,13 +18,15 @@
 
 - import_playbook: starship/core.yaml
 
-##### Developer tools
-
 # Visual Studio Code
 - import_playbook: vscode/core.yaml
 
 # git
 - import_playbook: git/core.yaml
+- import_playbook: git/config.yaml
+
+# XMind
+- import_playbook: jz/elsevier/xmind.yaml
 
 # PowerShell Core
 #- import_playbook: powershell-core/core.yaml
