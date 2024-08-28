@@ -35,7 +35,6 @@
         marker: "### {mark} Ansible managed: set locale"
         block: |
           export LANG=en_US.UTF-8
-          # export LC_ALL=en_US.UTF-8
 
     - name: Add bash aliases
       blockinfile:
