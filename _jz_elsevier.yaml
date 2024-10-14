@@ -25,6 +25,7 @@
 
 # git
 - import_playbook: git/core.yaml
+- import_playbook: git/config.yaml
 
 # PowerShell Core
 #- import_playbook: powershell-core/core.yaml
