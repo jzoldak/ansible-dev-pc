@@ -1,0 +1,29 @@
+---
+- name: Install XMind from Flathub
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+
+  tasks:
+    - name: Update apt package list
+      apt:
+        update_cache: yes
+
+    - name: Install Flatpak
+      apt:
+        name: flatpak
+        state: present
+
+    - name: Add Flathub repository
+      command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+    - name: Install XMind 8 and prerequisites from Flathub
+      command: flatpak install -y flathub net.xmind.XMind8
+
+    - name: Add alias for XMind 8 to .bashrc
+      become: no
+      blockinfile:
+        path: ~/.bashrc
+        marker: "### {mark} Ansible managed: xmind customization"
+        block: |
+          alias xmind='flatpak run net.xmind.XMind8'
