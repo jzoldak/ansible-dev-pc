@@ -22,8 +22,6 @@
 
     - name: Add alias for XMind 8 to .bashrc
       become: no
-      blockinfile:
+      lineinfile:
         path: ~/.bashrc
-        marker: "### {mark} Ansible managed: xmind customization"
-        block: |
-          alias xmind='flatpak run net.xmind.XMind8'
+        line: alias xmind='flatpak run net.xmind.XMind8'
