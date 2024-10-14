@@ -1,0 +1,52 @@
+---
+- name: XMind
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Update APT package list
+      become: yes
+      apt:
+        update_cache: yes
+      register: apt_update
+      retries: 5
+      until: apt_update is success
+
+    - name: Install prerequisite jdk
+      become: yes
+      apt:
+        package: default-jdk
+
+    - name: Download XMind 8
+      get_url:
+        url: https://www.xmind.app/xmind/downloads/xmind-8-update9-linux.zip
+        dest: /tmp/xmind-8-update9-linux.zip
+        mode: 0755
+
+    - name: Create xmind folder if it doesn't exist
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/bin/xmind-8-update9-linux"
+        state: directory
+        mode: '0755'
+
+    - name: Unzip XMind download
+      ansible.builtin.unarchive:
+        src: /tmp/xmind-8-update9-linux.zip
+        dest: "{{ ansible_env.HOME }}/bin/xmind-8-update9-linux"
+        remote_src: true
+
+    - name: Create symbolic link to xmind executable
+      ansible.builtin.file:
+        src: "{{ ansible_env.HOME }}/bin/xmind-8-update9-linux/XMind_i386/XMind"
+        dest: "{{ ansible_env.HOME }}/bin/xmind"
+        state: link
+
+    - name: Copy fonts folder recursively
+      become: yes
+      copy:
+        src: "{{ ansible_env.HOME }}/bin/xmind-8-update9-linux/fonts/"
+        dest: /usr/share/fonts/truetype/xmind/
+        remote_src: true
+
+    - name: Install XMind fonts
+      ansible.builtin.command: fc-cache -f
