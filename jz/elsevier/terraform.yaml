@@ -1,11 +1,11 @@
 ---
-- name: Install Terraform version 1.5.7 and add it to PATH
+- name: Install Terraform and Terragrunt and add them to PATH
   hosts: localhost
   gather_facts: no
 
   vars:
-    terraform_version: 1.5.7
-    terragrunt_version: v0.50.12
+    terraform_version: 1.8.5
+    terragrunt_version: v0.68.4
 
   tasks:
     - name: Download Terraform binary
