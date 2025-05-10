@@ -3,6 +3,35 @@
   connection: local
 
   tasks:
+    - name: Install core dependencies
+      become: yes
+      apt:
+        package: "{{ item }}"
+      loop:
+        - build-essential
+        - libffi-dev
+        - libssl-dev
+        - zlib1g-dev
+        - libbz2-dev
+        - libreadline-dev
+        - libsqlite3-dev
+        - libncurses5-dev
+        - libncursesw5-dev
+        - tk-dev
+        - liblzma-dev
+        - libgdbm-dev
+        - libnss3-dev
+        - libdb-dev
+        - libexpat1-dev
+        - libuuid1
+        - libgmp-dev
+        - libx11-dev
+        - libxcb1-dev
+        - libx11-xcb-dev
+        - libxext-dev
+        - libxft-dev
+        - libxrender-dev
+
     - name: Install pyenv
       git:
         dest: ~/.pyenv
