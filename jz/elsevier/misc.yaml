@@ -11,6 +11,7 @@
         - dos2unix
         - gcc-11
         - gh
+        - graphviz
         - make
         - python3-virtualenv
         - wslu
