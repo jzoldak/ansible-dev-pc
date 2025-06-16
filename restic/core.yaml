@@ -21,7 +21,7 @@
         marker: "### {mark} Ansible managed: restic environment variables"
         block: |
           export RESTIC_REPOSITORY=/media/jz/JHWZ-backup/restic-repo
-          export RESTIC_PASSWORD="lagoon wildly glowworm"
+          export RESTIC_PASSWORD="lagoon wildly glowworm"  # fyi this is a placeholder not real
 
     - name: Add aliases for backup
       blockinfile:
