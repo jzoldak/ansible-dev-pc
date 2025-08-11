@@ -6,7 +6,7 @@
 - import_playbook: core.yaml
 
 # Trust the zscaler root cert in order for TLS requests to succeed
-- import_playbook: jz/zscalar/core.yaml
+- import_playbook: jz/zscaler/core.yaml
 
 - import_playbook: jz/elsevier/aws.yaml
 - import_playbook: jz/elsevier/azure.yaml
