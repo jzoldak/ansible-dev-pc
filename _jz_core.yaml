@@ -8,6 +8,7 @@
         name:
           - broot
           - gh
+          - go
           - graphviz
           - ldns  # provides drill (similar to ldnsutils)
           - magic-wormhole
