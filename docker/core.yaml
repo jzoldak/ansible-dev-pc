@@ -7,3 +7,7 @@
       homebrew_cask:
         name: docker
         state: present
+
+    - name: Remove quarantine attribute from Docker
+      shell: xattr -d com.apple.quarantine /Applications/Docker.app
+      ignore_errors: yes
