@@ -1,0 +1,25 @@
+- name: Environment variable customization
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install other helpful apt packages
+      become: true
+      apt:
+        package:
+          - gnome-system-tools
+          - graphviz
+          - ldnsutils
+          - libnss-myhostname
+          - libnss3-tools
+          - magic-wormhole
+          - nmap
+          - qemu-kvm
+          - scdaemon
+          - shellcheck
+          - smbclient
+          - tree
+          - usb-creator-gtk
+          - whois
+          - wireguard
+          - gh
