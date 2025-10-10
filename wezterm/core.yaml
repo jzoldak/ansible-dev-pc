@@ -1,0 +1,24 @@
+- name: WezTerm
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install WezTerm terminal emulator
+      homebrew_cask:
+        name: wezterm
+        state: present
+
+    - name: Remove quarantine attribute from WezTerm
+      shell: xattr -d com.apple.quarantine /Applications/WezTerm.app
+      ignore_errors: yes
+
+    - name: Install Meslo LG Nerd Font
+      homebrew_cask:
+        name: font-meslo-lg-nerd-font
+        state: present
+
+    - name: "Update WezTerm configuration"
+      copy:
+        src: wezterm.lua
+        dest: ~/.wezterm.lua
+        
