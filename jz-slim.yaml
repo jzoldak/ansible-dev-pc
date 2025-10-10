@@ -13,66 +13,38 @@
 - import_playbook: core.yaml
 - import_playbook: _jz_core.yaml
 
-# Azure
-- import_playbook: azure/az.yaml
-- import_playbook: azure/azshell.yaml
-- import_playbook: azure/azcopy.yaml
-- import_playbook: azure/storage-explorer.yaml
-- import_playbook: azure/az-aks.yaml
+# TODO: install Brave browser
 
-# Brave
-- import_playbook: brave/core.yaml
-
-# Broot
-- import_playbook: broot/core.yaml
-
+##### Applications
 # Docker
 - import_playbook: docker/core.yaml
 
-# Flameshot
-- import_playbook: flameshot/core.yaml
+# WezTerm (high performance terminal application)
+- import_playbook: wezterm/core.yaml
 
-# git
-- import_playbook: git/core.yaml
+# # RDP/X/VNC/SSH client
+# - import_playbook: remmina/core.yaml
 
-# golang
-- import_playbook: golang/core.yaml
+# # Install tmux
+# - import_playbook: tmux/core.yaml
 
-##### Applications (free)
+# # Install fonts for starship
+# - import_playbook: fonts/core.yaml
 
-# Alacritty (high performance terminal application)
-- import_playbook: alacritty/core.yaml
-- import_playbook: alacritty/customization-jz.yaml
+# # Install starship
+# - import_playbook: starship/core.yaml
 
-# Google Chrome browser
-- import_playbook: google-chrome/core.yaml
+# # Install python packages
+# - import_playbook: python-packages/core.yaml
 
-# RDP/X/VNC/SSH client
-- import_playbook: remmina/core.yaml
+# # Install terraform
+# - import_playbook: terraform/core.yaml
 
-# Install tmux
-- import_playbook: tmux/core.yaml
+# # Install cherrytree
+# - import_playbook: cherrytree/core.yaml
 
-# Install Atom
-- import_playbook: atom/core.yaml
+# # Install the Google Cloud SDK
+# - import_playbook: gcloud/core.yaml
 
-# Install fonts for starship
-- import_playbook: fonts/core.yaml
-
-# Install starship
-- import_playbook: starship/core.yaml
-
-# Install python packages
-- import_playbook: python-packages/core.yaml
-
-# Install terraform
-- import_playbook: terraform/core.yaml
-
-# Install cherrytree
-- import_playbook: cherrytree/core.yaml
-
-# Install the Google Cloud SDK
-- import_playbook: gcloud/core.yaml
-
-# Install the Bitwarden App
-- import_playbook: bitwarden/core.yaml
+# # Install the Bitwarden App
+# - import_playbook: bitwarden/core.yaml
