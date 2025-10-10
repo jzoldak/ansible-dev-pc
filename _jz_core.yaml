@@ -6,15 +6,15 @@
     - name: Install other helpful packages (macOS)
       homebrew:
         name:
+          - broot
+          - gh
           - graphviz
           - ldns  # provides drill (similar to ldnsutils)
           - magic-wormhole
           - nmap
-          - gnupg  # provides scdaemon
           - shellcheck
           - speedtest-cli
           - tree
           - whois
           - wireguard-tools
-          - gh
         state: present
