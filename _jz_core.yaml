@@ -12,6 +12,7 @@
           - ldns  # provides drill (similar to ldnsutils)
           - magic-wormhole
           - nmap
+          - ripgrep
           - shellcheck
           - speedtest-cli
           - tree
