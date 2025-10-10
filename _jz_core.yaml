@@ -3,23 +3,18 @@
   connection: local
 
   tasks:
-    - name: Install other helpful apt packages
-      become: true
-      apt:
-        package:
-          - gnome-system-tools
+    - name: Install other helpful packages (macOS)
+      homebrew:
+        name:
           - graphviz
-          - ldnsutils
-          - libnss-myhostname
-          - libnss3-tools
+          - ldns  # provides drill (similar to ldnsutils)
           - magic-wormhole
           - nmap
-          - qemu-kvm
-          - scdaemon
+          - gnupg  # provides scdaemon
           - shellcheck
-          - smbclient
+          - speedtest-cli
           - tree
-          - usb-creator-gtk
           - whois
-          - wireguard
+          - wireguard-tools
           - gh
+        state: present
