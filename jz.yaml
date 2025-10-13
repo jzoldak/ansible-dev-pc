@@ -12,40 +12,18 @@
 - import_playbook: _jz_core.yaml
 - import_playbook: _jz_customized.yaml
 
-- import_playbook: tmux/core.yaml
-- import_playbook: atom/core.yaml
-- import_playbook: fonts/core.yaml
+
 - import_playbook: starship/core.yaml
-- import_playbook: python-latest/core.yaml
 - import_playbook: python-packages/core.yaml
 - import_playbook: terraform/core.yaml
 - import_playbook: cherrytree/core.yaml
-- import_playbook: signal/core.yaml
 - import_playbook: obs-studio/core.yaml
-- import_playbook: discord/core.yaml
-- import_playbook: gcloud/core.yaml
-- import_playbook: bitwarden/core.yaml
-- import_playbook: virtualbox/core.yaml
 
-- import_playbook: dotnet/core.yaml
-- import_playbook: azure/az.yaml
-- import_playbook: azure/azshell.yaml
-- import_playbook: azure/azcopy.yaml
-- import_playbook: azure/storage-explorer.yaml
-- import_playbook: azure/az-aks.yaml
 
 - import_playbook: aws/core.yaml
 - import_playbook: k9s/core.yaml
 - import_playbook: restic/core.yaml
 - import_playbook: cyberchef/core.yaml
 
-- import_playbook: libre-office/core.yaml
 
-- import_playbook: vscode/core.yaml
-- import_playbook: vscode/jz-customization.yaml
-
-- import_playbook: docker/core.yaml
 - import_playbook: nodejs/core.yaml
-
-# Manual stuff
-# Open up Firefox, log in and sync
