@@ -10,6 +10,7 @@
       loop:
         - liamg/tfsec
         - sigsegv13/tgenv
+        - theurichde/go-aws-sso
         - weaveworks/tap
 
     - name: install required brews
@@ -19,6 +20,7 @@
       loop:
         - awscli
         - gawk
+        - go-aws-sso
         - graphviz
         - helm
         - istioctl
