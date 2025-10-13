@@ -1,0 +1,31 @@
+- name: Terraform
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: add required casks
+      homebrew_tap:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - liamg/tfsec
+        - sigsegv13/tgenv
+        - weaveworks/tap
+
+    - name: install required brews
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - awscli
+        - gawk
+        - graphviz
+        - helm
+        - istioctl
+        - kubectl
+        - pre-commit
+        - shellcheck
+        - terraform-docs
+        - tfenv
+        - tflint
+        - tgenv
