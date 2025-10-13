@@ -1,0 +1,27 @@
+- name: Starship
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install Starship
+      homebrew:
+        name: starship
+        state: present
+
+    - name: Ensure ~/.config folder exists
+      file:
+        path: ~/.config
+        state: directory
+        mode: 0700
+
+    - name: Copy starship.toml to ~/.config
+      copy:
+        src: starship.toml
+        dest: ~/.config/starship.toml
+
+    - name: Enable Starship in zsh
+      blockinfile:
+        path: ~/.zshrc
+        marker: "### {mark} Ansible managed: Starship"
+        block: |
+          eval "$(starship init zsh)"
