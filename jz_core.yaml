@@ -6,13 +6,15 @@
     - name: Install other helpful packages (macOS)
       homebrew:
         name:
+          - black
           - broot
-          - gh
+          - gh  # GitHub CLI
           - go
           - graphviz
           - ldns  # provides drill (similar to ldnsutils)
           - magic-wormhole
           - nmap
+          - pre-commit
           - ripgrep
           - shellcheck
           - speedtest-cli

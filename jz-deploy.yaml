@@ -11,7 +11,7 @@
 
 ##### Operating system packages and configuration
 - import_playbook: core.yaml
-- import_playbook: _jz_core.yaml
+- import_playbook: jz_core.yaml
 
 # TODO: install Brave browser
 
@@ -22,29 +22,8 @@
 # WezTerm (high performance terminal application)
 - import_playbook: wezterm/core.yaml
 
-# # RDP/X/VNC/SSH client
-# - import_playbook: remmina/core.yaml
+# Install terraform
+- import_playbook: terraform/core.yaml
 
-# # Install tmux
-# - import_playbook: tmux/core.yaml
-
-# # Install fonts for starship
-# - import_playbook: fonts/core.yaml
-
-# # Install starship
-# - import_playbook: starship/core.yaml
-
-# # Install python packages
-# - import_playbook: python-packages/core.yaml
-
-# # Install terraform
-# - import_playbook: terraform/core.yaml
-
-# # Install cherrytree
-# - import_playbook: cherrytree/core.yaml
-
-# # Install the Google Cloud SDK
-# - import_playbook: gcloud/core.yaml
-
-# # Install the Bitwarden App
-# - import_playbook: bitwarden/core.yaml
+# Install starship
+- import_playbook: starship/core.yaml
