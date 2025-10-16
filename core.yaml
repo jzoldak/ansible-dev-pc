@@ -3,8 +3,6 @@
   connection: local
 
   tasks:
-    - set_fact: is_wsl=false
-
     - name: Create ~/bin
       file:
         path: ~/bin
@@ -21,14 +19,24 @@
     - name: Install core Homebrew packages
       homebrew:
         name:
+          - black
+          - broot
+          - gh
           - gnupg
+          - go
+          - graphviz
           - htop
           - inetutils
           - jq
+          - ldns  # provides drill
+          - magic-wormhole
+          - nmap
           - p7zip
+          - pre-commit
+          - ripgrep
+          - shellcheck
+          - speedtest-cli
+          - tree
+          - whois
+          - wireguard-tools
         state: present
-
-    - name: Ensure ~/.hushlogin exists
-      file:
-        path: ~/.hushlogin
-        state: touch
