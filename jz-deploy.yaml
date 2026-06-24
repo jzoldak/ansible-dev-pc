@@ -5,5 +5,5 @@
 - import_playbook: core.yaml
 - import_playbook: wezterm.yaml
 - import_playbook: starship.yaml
-- import_playbook: docker.yaml
+# - import_playbook: docker.yaml. # install via self service
 - import_playbook: terraform.yaml

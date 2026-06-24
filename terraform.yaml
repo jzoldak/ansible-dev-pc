@@ -18,9 +18,9 @@
         name: "{{ item }}"
         state: present
       loop:
-        - awscli
+        # - awscli # via self service +
         - gawk
-        - go-aws-sso  # URL is https://elsevier-sso.awsapps.com/start/#, choose eu-west-1
+        # - go-aws-sso  # URL is https://elsevier-sso.awsapps.com/start/#, choose eu-west-1
         - graphviz
         - helm
         - istioctl
